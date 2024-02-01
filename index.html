@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title> RecommenDater Date Night Suggestion App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> RecommenDater Date Night Suggestion App</title>
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
@@ -16,34 +17,48 @@
     </div> <br>
 
     <h1>Budget Option</h1>
-    </label for="budget">Choose Budget:
-    </label>
-    <select> id= "budget">
-        <option value="Budget friendly">Budget friendly</option>
-        <option value="Moderate Spending">Moderate Spending</option>
-        <option value="Extravagant">Extravagant</option>
-    </select>
+    </label for="budget">Choose Budget:</label>
+    <form action="/action_page.php">
+        <input type="checkbox" id="Budget Friendly" name="Budget Friendly" value="Budget Friendly">
+        <label for="Budget Friendly">Budget Friendly</label><br>
+        <input type="checkbox" id="Moderate Spending" name="Moderate Spending" value="Moderate Friendly">
+        <label for="Moderate Spending"> Moderate Spending</label><br>
+        <input type="checkbox" id="Extravagant" name="Extravagant" value="Extravagant">
+        <label for="Extravagant">Extravagant</label>
+    </form>
+
     <div>
         <h1>Restaurant Suggestion</h1>
-        <label for="cuisine">Choose Cuisine:
-        </label>
-        <select> id= "cuisine">
-            <option value="Italian">Italian</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Chinese">Chinese</option>
-            <option value="American">American</option>
-        </select>
+        </label for="Choose craving">Choose Craving:</label>
+        <form action="/action_page.php">
+            <input type="checkbox" id="American" name="American" value="American">
+            <label for="American">American</label><br>
+            <input type="checkbox" id="Chinese" name="Chinese" value="Chinese">
+            <label for="Chinese">Chinese</label><br>
+            <input type="checkbox" id="Mexican" name="Mexican" value="Mexican">
+            <label for="Mexican">Mexican</label><br>
+            <input type="checkbox" id="Italian" name="Italian" value="Italian">
+            <label for="Italian">Italian</label><br>
+            <input type="checkbox" id="mediterranean" name="mediterranean" value="mediterranean">
+            <label for="mediterranean">mediterranean</label><br>
+        </form>
+
     </div>
     <div>
         <h1>Activity Suggestion</h1>
-        <label for="activity">Choose Activity:
-        </label>
-        <select> id= "activity">
-            <option value="Museum">Museum</option>
-            <option value="Cooking Class">Cooking Class</option>
-            <option value="Conservatory">Conservatory</option>
-            <option value="Walk by the lake">Walk by the lake</option>
-        </select>
+        </label for="Choose Activity">Choose Activity:</label>
+        <form action="/action_page.php">
+            <input type="checkbox" id="Conservatory" name="Conservatory" value="Conservatory">
+            <label for="Conservatory">Conservatory</label><br>
+            <input type="checkbox" id="Cooking Class" name="Cooking Class" value="Cooking Class">
+            <label for="Cooking Class">Cooking Class</label><br>
+            <input type="checkbox" id="Art Museum" name="Art Museum" value="Art Museum">
+            <label for="Art Museum">Art Museum</label><br>
+            <input type="checkbox" id="Walk by the Lake" name="Walk by the Lake" value="Walk by the Lake">
+            <label for="Walk by the Lake">Walk by the Lake"</label><br>
+            <input type="checkbox" id="mediterranean" name="mediterranean" value="mediterranean">
+            <label for="mediterranean">mediterranean</label><br>
+        </form>
     </div>
     <div>
         <h2> Enter Location</h2>
