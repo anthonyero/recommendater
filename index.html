@@ -15,22 +15,21 @@
 
 
     </div> <br>
-
-    <h1>Budget Option</h1>
-    </label for="budget">Choose Budget:</label>
-    <form action="/action_page.php">
+    <form>
+        <h1>Budget Option</h1>
+        </label for="budget">Choose Budget:</label><br>
         <input type="checkbox" id="Budget Friendly" name="Budget Friendly" value="Budget Friendly">
         <label for="Budget Friendly">Budget Friendly</label><br>
         <input type="checkbox" id="Moderate Spending" name="Moderate Spending" value="Moderate Friendly">
         <label for="Moderate Spending"> Moderate Spending</label><br>
         <input type="checkbox" id="Extravagant" name="Extravagant" value="Extravagant">
         <label for="Extravagant">Extravagant</label>
-    </form>
 
-    <div>
-        <h1>Restaurant Suggestion</h1>
-        </label for="Choose craving">Choose Craving:</label>
-        <form action="/action_page.php">
+
+        <div>
+            <h1>Restaurant Suggestion</h1>
+            </label for="Choose craving">Choose Craving:</label><br>
+
             <input type="checkbox" id="American" name="American" value="American">
             <label for="American">American</label><br>
             <input type="checkbox" id="Chinese" name="Chinese" value="Chinese">
@@ -39,15 +38,14 @@
             <label for="Mexican">Mexican</label><br>
             <input type="checkbox" id="Italian" name="Italian" value="Italian">
             <label for="Italian">Italian</label><br>
-            <input type="checkbox" id="mediterranean" name="mediterranean" value="mediterranean">
-            <label for="mediterranean">mediterranean</label><br>
-        </form>
+            <input type="checkbox" id="Mediterranean" name="Mediterranean" value="Mediterranean">
+            <label for="Mediterranean">Mediterranean</label><br>
 
-    </div>
-    <div>
-        <h1>Activity Suggestion</h1>
-        </label for="Choose Activity">Choose Activity:</label>
-        <form action="/action_page.php">
+
+        </div>
+        <div>
+            <h1>Activity Suggestion</h1>
+            </label for="Choose Activity">Choose Activity:</label><br>
             <input type="checkbox" id="Conservatory" name="Conservatory" value="Conservatory">
             <label for="Conservatory">Conservatory</label><br>
             <input type="checkbox" id="Cooking Class" name="Cooking Class" value="Cooking Class">
@@ -55,19 +53,21 @@
             <input type="checkbox" id="Art Museum" name="Art Museum" value="Art Museum">
             <label for="Art Museum">Art Museum</label><br>
             <input type="checkbox" id="Walk by the Lake" name="Walk by the Lake" value="Walk by the Lake">
-            <label for="Walk by the Lake">Walk by the Lake"</label><br>
-            <input type="checkbox" id="mediterranean" name="mediterranean" value="mediterranean">
-            <label for="mediterranean">mediterranean</label><br>
-        </form>
-    </div>
-    <div>
-        <h2> Enter Location</h2>
-        <label for="location">Enter Location</label>
-        <input type="text" id="location" placeholder="City or Zip Code">
-        <button onclick="suggestRestaurant()">Get Suggestion</button>
-    </div>
+            <label for="Walk by the Lake">Walk by the Lake</label><br>
+            
+
+        </div>
+        <div>
+            <h2> Enter Location</h2>
+            <label for="location">Enter Location</label><br>
+            <input type="text" id="location" placeholder="City or Zip Code">
+            <button onclick="suggestRestaurant()">Get Suggestion</button>
+        </div>
+    </form>
     <div id="result"></div>
+
     <script src="./assets/script.js"></script>
+    </form>
 
 </body>
 
