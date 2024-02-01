@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title> RecommenDater Date Night Suggestion App</title>
+
+</head>
+
+<body>
+    <div>
+        <h1>Date Night Suggestion App</h1>
+
+
+    </div> 
+
+    <form>
+        <h2>Location</h2>
+            <label for="location">Please enter a city name or a zipcode</label>
+            <input type="text" id ="location"> 
+
+        <h2>Term</h2>
+            <label for="term">If you have a specific term, activity, or location, please enter it here</label>
+            <input type="text" id ="term"> 
+        <h2>Categories</h2>
+            <label for="artmuseum"> Art museums</label>
+            <input type="checkbox" id="artmuseum" value="categories=artmuseums">
+
+            <label for="theater">Movie Theaters</label>
+            <input type="checkbox" id="movietheaters" value="categories=movietheaters">
+
+        <h2>Price</h2>
+            <label for="price1">$</label>
+            <input type="checkbox" id="price1" value="price=1">
+            <label for="price2">$$</label>
+            <input type="checkbox" id="price2" value="price=2">
+            <label for="price3">$$$</label>
+            <input type="checkbox" id="price3" value="price=3">
+            <label for="price4">$$$$</label>
+            <input type="checkbox" id="price4" value="price=4">
+        <input type="submit" class="submit-button">
+       <!--  - Relevant parameters
+		- `location` - string
+		- `term` - string - Search terms e.g. "food" or "restaurants". May also use the businesses names.
+		- `radius` - integer - 
+		- `categories` - array of strings
+			- Categories to 
+				- 
+		- price - array of integers
+			- 4 categories
+				- range from 1 to 4 -->
+    </form>
+
+   
+    <script src="./assets/script.js"></script>
+
+</body>
+
+</html>
