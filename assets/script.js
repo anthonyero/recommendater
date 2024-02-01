@@ -40,7 +40,7 @@ function formRetrieval () {
         if (termInput.value != ""){
           var termInputString = termInput.value;
           if (termInputString.includes(" ")) {
-            termInputString.replaceAll(" ", "%20")
+            termInputString = termInputString.replaceAll(" ", "%20")
           }
           termInputString = "term=" + termInputString;
           userCriteria.push(termInputString);
@@ -55,7 +55,7 @@ function formRetrieval () {
         }
 
         if (movietheatersInput.checked) {
-          userCriteria.push(artmuseumInput.value);
+          userCriteria.push(artmusmInput.value);
         }
 
 
@@ -90,24 +90,42 @@ function formRetrieval () {
       
       queryStringConstructor(userCriteria)
 
-    // Attach values into a query string
+}
 
-    // Insert query string into request URL
+function queryStringConstructor (array) {
+  // Attach values into a query string
+  var queryString = array.join("&");
+  console.log(queryString);
 
-   // var requestURL = "'https://api.yelp.com/v3/businesses/search?" + queryString + "&sort_by=best_match&limit=20";
+  retrieveYelpAPI(queryString);
+  
+}
+
+
+function retrieveYelpAPI (string) {
+  // Insert query string into request URL
+
+  var requestURL = "https://api.yelp.com/v3/businesses/search?" + string + "&sort_by=best_match&limit=20";
+
+  fetch(requestURL, options) 
+    .then(function (response) {
+      return response.json();
+    })
+    .then (function (data){
+      console.log(data)
+    }) 
 
 
     // Returned object
         // Formatting returnedObject["businesses"][index]["name"]
 
 
+
 }
-
-function queryStringConstructor (array) {
-  var queryString = array.join("&");
-  console.log(queryString);
-}
-
-
 
 //fetch('https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20', options)
+
+fetch('https://api.yelp.com/v3/businesses/search?term=Art%20museums&sort_by=best_match&limit=20', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
