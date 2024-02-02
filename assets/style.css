@@ -1,7 +1,7 @@
 .header {
     text-align: center;
     margin-right: 10%;
-    color: rgba(0, 0, 0, 0.766);
+    color: rgba(0, 0, 0, 0.737);
     font-size: 25px;
    
     
@@ -19,7 +19,7 @@
 }
 
 body {
-    background-image: url(th.jpg);
+    background-image: url(Champagne.webp);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
