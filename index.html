@@ -14,12 +14,15 @@
         <h1>Date Night Suggestion App</h1>
 
 
-    </div> <br>
-    <form>
+    </div> 
+    <br>
+    <div class="box">
+      <form>
         <h2>Location</h2>
             <label for="location">Please enter a city name, state</label>
             <input type="text" id ="location"> 
-
+    </div>
+      <div class="box">
        <h2>Price</h2>
             <label for="price1">$</label>
             <input type="checkbox" id="price1" value="price=1">
@@ -29,10 +32,10 @@
             <input type="checkbox" id="price3" value="price=3">
             <label for="price4">$$$$</label>
             <input type="checkbox" id="price4" value="price=4">
-       
+      </div> 
 
 
-        <div>
+        <div class="box">
             <h1>Restaurant Suggestion</h1>
             </label for="Choose craving">Choose Craving:</label><br>
 
@@ -47,6 +50,7 @@
             <input type="checkbox" id="Mediterranean" name="Mediterranean" value="Mediterranean">
             <label for="Mediterranean">Mediterranean</label><br>
             <input type="submit" class="submit-button">
+        </div>
 
             <div class="card results hidden"> <!-- Card Template from Bulma; modified for current use; define class hidden with display: none in CSS -->
                 <div class="card-image">
