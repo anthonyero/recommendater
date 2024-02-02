@@ -16,14 +16,20 @@
 
     </div> <br>
     <form>
-        <h1>Budget Option</h1>
-        </label for="budget">Choose Budget:</label><br>
-        <input type="checkbox" id="Budget Friendly" name="Budget Friendly" value="Budget Friendly">
-        <label for="Budget Friendly">Budget Friendly</label><br>
-        <input type="checkbox" id="Moderate Spending" name="Moderate Spending" value="Moderate Friendly">
-        <label for="Moderate Spending"> Moderate Spending</label><br>
-        <input type="checkbox" id="Extravagant" name="Extravagant" value="Extravagant">
-        <label for="Extravagant">Extravagant</label>
+        <h2>Location</h2>
+            <label for="location">Please enter a city name, state</label>
+            <input type="text" id ="location"> 
+
+       <h2>Price</h2>
+            <label for="price1">$</label>
+            <input type="checkbox" id="price1" value="price=1">
+            <label for="price2">$$</label>
+            <input type="checkbox" id="price2" value="price=2">
+            <label for="price3">$$$</label>
+            <input type="checkbox" id="price3" value="price=3">
+            <label for="price4">$$$$</label>
+            <input type="checkbox" id="price4" value="price=4">
+        <input type="submit" class="submit-button">
 
 
         <div>
@@ -43,27 +49,7 @@
 
 
         </div>
-        <div>
-            <h1>Activity Suggestion</h1>
-            </label for="Choose Activity">Choose Activity:</label><br>
-            <input type="checkbox" id="Conservatory" name="Conservatory" value="Conservatory">
-            <label for="Conservatory">Conservatory</label><br>
-            <input type="checkbox" id="Cooking Class" name="Cooking Class" value="Cooking Class">
-            <label for="Cooking Class">Cooking Class</label><br>
-            <input type="checkbox" id="Art Museum" name="Art Museum" value="Art Museum">
-            <label for="Art Museum">Art Museum</label><br>
-            <input type="checkbox" id="Walk by the Lake" name="Walk by the Lake" value="Walk by the Lake">
-            <label for="Walk by the Lake">Walk by the Lake</label><br>
-            
-
-        </div>
-        <div>
-            <h2> Enter Location</h2>
-            <label for="location">Enter Location</label><br>
-            <input type="text" id="location" placeholder="City or Zip Code">
-            <button onclick="suggestRestaurant()">Get Suggestion</button>
-        </div>
-    </form>
+        </form>
     <div id="result"></div>
 
     <script src="./assets/script.js"></script>
