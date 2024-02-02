@@ -155,5 +155,44 @@ function renderResult(returnedObject) {
 
 }
 
-
+//Defining variables for search input and button
+const searchInput = document.querySelector(".search-input");
+const searchBtn = document.querySelector(".search-btn");
+//Adding event listener to the search button
+searchBtn.addEventListener("click",() => {
+  map.entities.clear();
+  geocodeQuery(searchInput.value);
+});
+//Initializing the map when the Bing Maps API script has loaded
+function GetMap(){
+    var map = new Microsoft.Maps.Map(document.getElementById('map'), {
+        credentials: 'AjQ8v1fLaRDzfwJA4pse-nM0Aps6r1IOWRWI9xTHKoFMAct7GaMo-3xaZxsxJoaZ',
+        center: new Microsoft.Maps.Location(41.8781, -87.6298),
+        zoom: 12
+    });
+}
+//ensures maps API has loaded before calling GetMap
+if(typeof Microsoft !== 'undefined')
+    Microsoft.Maps.loadModule('Microsoft.Maps.Map', {
+        callback: GetMap
+});
+//handles the search
+function geocodeQuery(query){
+    Microsoft.Maps.loadModule('Microsoft.Maps.Search',function (){
+        var searchManager = new Microsoft.Maps.Search.SearchManager();
+        var searchRequest = {
+            where: query,
+            callback: function (results, userData) {
+            //process results
+            if(results && results.length > 0) {
+                var location = results[0].location;
+                map.setView({ center: location, zoom: 12});
+            } else{
+                alert('Location not found.');
+            }
+        }
+    }
+            searchManager.geocode(searchRequest);
+        });
+    }
 
