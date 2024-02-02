@@ -1,25 +1,18 @@
-submitBtn = document.querySelector(".submit-button");
+var submitBtn = document.querySelector(".submit-button");
 
-locationInput = document.getElementById("location");
-termInput = document.getElementById("term");
-artmuseumInput = document.getElementById("artmuseum");
-movietheatersInput = document.getElementById("movietheaters");
-price1Input = document.getElementById("price1");
-price2Input = document.getElementById("price2");
-price3Input = document.getElementById("price3");
-price4Input = document.getElementById("price4");
+var locationInput = document.getElementById("location");
+var termInput = document.getElementById("term");
+var artmuseumInput = document.getElementById("artmuseum");
+var movietheatersInput = document.getElementById("movietheaters");
+var price1Input = document.getElementById("price1");
+var price2Input = document.getElementById("price2");
+var price3Input = document.getElementById("price3");
+var price4Input = document.getElementById("price4");
+var resultsElement = document.querySelector(".results");
+
+var randomIndex = 0;
 
 
-
-
-// Yelp Fusion API options
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer gURzSb_9lyXhmQBVYtv-Njps7SHI1MkUcEy47hSvOYIpeJciX4QKno-UuHEBMo3BLTCbLGU46HFPCMrGQ5q2TbKmgkGFr6wcAGPZ1TKDQ_uwiN9vTAJtjoU6WEe4ZXYx'
-    }
-  };
 
 submitBtn.addEventListener("click", formRetrieval);
 
@@ -113,6 +106,8 @@ function retrieveYelpAPI (string) {
     })
     .then (function (data){
       console.log(data)
+      randomIndex = Math.floor(Math.random() * data["businesses"].length)
+      renderResult(data)
     }) 
 
 
@@ -125,7 +120,40 @@ function retrieveYelpAPI (string) {
 
 //fetch('https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20', options)
 
-fetch('https://api.yelp.com/v3/businesses/search?term=Art%20museums&sort_by=best_match&limit=20', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+
+
+
+
+/*
+fetch('https://api.artic.edu/api/v1/artworks/129884')
+.then(response => response.json())
+.then(response => console.log(response))
+.catch(err => console.error(err));
+
+
+fetch('https://api.artic.edu/api/v1/artworks/search?q=monet&q=hopper')
+.then(response => response.json())
+.then(response => console.log(response))
+.catch(err => console.error(err));
+
+fetch('https://api.artic.edu/api/v1/artworks/search?q=monet,q=hopper&size=20')
+.then(response => response.json())
+.then(response => console.log(response))
+.catch(err => console.error(err));
+
+fetch('https://api.artic.edu/api/v1/artworks/search?q=cubism&size=20')
+.then(response => response.json())
+.then(response => console.log(response))
+.catch(err => console.error(err));
+*/
+function renderResult(returnedObject) {
+  document.querySelector(".content").textContent = returnedObject["businesses"][randomIndex]["name"];
+
+  if (resultsElement.hasAttribute("style", ".hidden")) {
+    resultsElement.removeAttribute("style", ".hidden");
+  }
+
+}
+
+
+

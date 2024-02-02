@@ -1,15 +1,32 @@
-.header{
+.header {
     text-align: center;
-    color:rgba(236, 127, 255, 0.766);
+    margin-right: 10%;
+    color: rgba(0, 0, 0, 0.766);
     font-size: 25px;
+   
+    
+
+
+
 }
 
-.start button{
+.start button {
     font-size: large;
-    background-color: aquamarine;
-    color: blueviolet
+    background-color: rgb(17, 1, 14);
+    color: rgba(238, 231, 231, 0.766);
+    
+
 }
 
-body{
-    background-color: darkslateblue;
+body {
+    background-image: url(th.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-attachment: cover;
+
+
+}
+h1{
+    text-align: left;
 }
