@@ -18,6 +18,7 @@ var userCriteria = {
   price: []
 }
 
+var filteredResults = [];
 
 submitBtn.addEventListener("click", formRetrieval);
 
@@ -43,7 +44,7 @@ function formRetrieval () {
           userCriteria["categories"].push(mediterraneanInput.value);
         }
 
-        // price
+        // price (TO DO UPDATE VALUES IN HTML)
 
         if (price1Input.checked) {
           userCriteria["price"].push(price1Input.value);
@@ -84,35 +85,33 @@ function retrieveTravelAdvisorAPI () {
     })
     .then (function (data){
       console.log(data)
+      filterResults(data);
     }) */
 }
 
-
-
-
-
-
+function filterResults(returnedObject) {
+  filteredResults = [];
+  // Define criteria and append objects from returnedObject that satisfy our filtered criteria
+  // if filteredResults develops an an array with 0 results, call retrieveTravelAdivsorAPI again
+ 
+  // if filteredResults.length > 0
+    // Call renderResult() function
+}
 
 function renderResult(returnedObject) {
-  document.querySelector(".content").textContent = returnedObject["businesses"][randomIndex]["name"];
+  randomIndex = Math.floor(Math.random() * filteredResults.length);
+  document.querySelector(".content").textContent = filteredResults[randomIndex]["name"];
+ 
+  // Start adding new elements adding text content modifiers to reflect the randomly selected option
 
   if (resultsElement.hasAttribute("style", ".hidden")) {
     resultsElement.removeAttribute("style", ".hidden");
   }
 
+ 
 }
 
-/*
 
-
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-*/
 //Defining variables for search input and button
 const searchInput = document.querySelector(".search-input");
 const searchBtn = document.querySelector(".search-btn");
