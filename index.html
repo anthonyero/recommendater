@@ -18,20 +18,18 @@
     <br>
     <div class="box">
         <form>
-            <h2>Location</h2>
-            <label for="location">Please enter a city name, state</label>
-            <input type="text" id="location">
+           
     </div>
     <div class="box">
         <h2>Price</h2>
         <label for="price1">$</label>
-        <input type="checkbox" id="price1" value="price=1">
+        <input type="checkbox" id="price1" value="$">
         <label for="price2">$$</label>
-        <input type="checkbox" id="price2" value="price=2">
+        <input type="checkbox" id="price2" value="$$">
         <label for="price3">$$$</label>
-        <input type="checkbox" id="price3" value="price=3">
+        <input type="checkbox" id="price3" value="$$$">
         <label for="price4">$$$$</label>
-        <input type="checkbox" id="price4" value="price=4">
+        <input type="checkbox" id="price4" value="$$$$">
     </div>
 
 
@@ -52,33 +50,35 @@
         <input type="submit" class="submit-button">
     </div>
 
-    <div class="card results hidden">
-        <!-- Card Template from Bulma; modified for current use; define class hidden with display: none in CSS -->
-        <div class="card-image">
-            <figure class="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-        </div>
-        <div class="card-content">
-            <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48">
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                    </figure>
-                </div>
-                <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                    <p class="subtitle is-6">@johnsmith</p>
-                </div>
+    
+        </form>
+        <div id="result">
+          <div class="card results hidden">
+            <!-- Card Template from Bulma; modified for current use; define class hidden with display: none in CSS -->
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
             </div>
-
-
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                    </div>
+                </div>
+    
+    
+            </div>
         </div>
-        </form>
-        <div id="result"></div>
 
         </form>
-
+        <script src="./assets/js/form.js"> </script>
         <script src="./assets/js/script.js"></script>
 </body>
 
