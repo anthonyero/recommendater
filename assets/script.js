@@ -62,71 +62,37 @@ function formRetrieval () {
       
       console.log(userCriteria)
       
-      queryStringConstructor(userCriteria)
-
-}
-
-function queryStringConstructor (array) {
-  // Attach values into a query string
-  var queryString = array.join("&");
-  console.log(queryString);
-
-  retrieveYelpAPI(queryString);
-  
+      retrieveTravelAdvisorAPI()
 }
 
 
-function retrieveYelpAPI (string) {
-  // Insert query string into request URL
 
-  var requestURL = "https://api.yelp.com/v3/businesses/search?" + string + "&sort_by=best_match&limit=20";
-
+function retrieveTravelAdvisorAPI () {
+  var randomPage = Math.floor(Math.random() * 298) // The API indicates it has 298 pages of data for Chicago
+  const requestURL = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=35805&page=' + randomPage;
+  const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '93e394b762msh5ff717525639df9p1be66djsn66e4b499732d',
+		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+	}
+  };
+  /* UNCOMMENT FOR TESTING AND FOR DEPLOYMENT
   fetch(requestURL, options) 
     .then(function (response) {
       return response.json();
     })
     .then (function (data){
       console.log(data)
-      randomIndex = Math.floor(Math.random() * data["businesses"].length)
-      renderResult(data)
-    }) 
-
-
-    // Returned object
-        // Formatting returnedObject["businesses"][index]["name"]
-
-
-
+    }) */
 }
 
-//fetch('https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20', options)
 
 
 
 
 
-/*
-fetch('https://api.artic.edu/api/v1/artworks/129884')
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
 
-
-fetch('https://api.artic.edu/api/v1/artworks/search?q=monet&q=hopper')
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
-
-fetch('https://api.artic.edu/api/v1/artworks/search?q=monet,q=hopper&size=20')
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
-
-fetch('https://api.artic.edu/api/v1/artworks/search?q=cubism&size=20')
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
-*/
 function renderResult(returnedObject) {
   document.querySelector(".content").textContent = returnedObject["businesses"][randomIndex]["name"];
 
@@ -137,14 +103,7 @@ function renderResult(returnedObject) {
 }
 
 /*
-const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=35805&page=1';
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '93e394b762msh5ff717525639df9p1be66djsn66e4b499732d',
-		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-	}
-};
+
 
 try {
 	const response = await fetch(url, options);
