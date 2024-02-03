@@ -1,9 +1,10 @@
 var submitBtn = document.querySelector(".submit-button");
 
-var locationInput = document.getElementById("location");
-var termInput = document.getElementById("term");
-var artmuseumInput = document.getElementById("artmuseum");
-var movietheatersInput = document.getElementById("movietheaters");
+var americanInput = document.getElementById("American");
+var chineseInput = document.getElementById("Chinese");
+var mexicanInput = document.getElementById("Mexican");
+var italianInput = document.getElementById("Italian");
+var mediterraneanInput = document.getElementById("Mediterranean")
 var price1Input = document.getElementById("price1");
 var price2Input = document.getElementById("price2");
 var price3Input = document.getElementById("price3");
@@ -12,7 +13,10 @@ var resultsElement = document.querySelector(".results");
 
 var randomIndex = 0;
 
-
+var userCriteria = {
+  categories: [],
+  price: []
+}
 
 
 submitBtn.addEventListener("click", formRetrieval);
@@ -20,65 +24,41 @@ submitBtn.addEventListener("click", formRetrieval);
 // User Criteria Retrieval and url request string formation
 function formRetrieval () {
   event.preventDefault();
-    // RequestURL template 'https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20'
-
-    const userCriteria = [];
 
     // Pull values from form 
-        // location
-        if (locationInput.value != "") {
-          var location = "location=" + locationInput.value;
-          userCriteria.push(location);
+        // categories (TO DO UPDATE)
+        if (americanInput.checked) {
+          userCriteria["categories"].push(americanInput.value);
         }
-        // term
-        if (termInput.value != ""){
-          var termInputString = termInput.value;
-          if (termInputString.includes(" ")) {
-            termInputString = termInputString.replaceAll(" ", "%20")
-          }
-          termInputString = "term=" + termInputString;
-          userCriteria.push(termInputString);
+        if (chineseInput.checked) {
+          userCriteria["categories"].push(chineseInput.value);
         }
-        // radius
-        // categories
-        if (artmuseumInput.checked) {
-          userCriteria.push(artmuseumInput.value);
+        if (mexicanInput.checked) {
+          userCriteria["categories"].push(mexicanInput.value);
         }
-        if (movietheatersInput.checked) {
-          userCriteria.push(artmuseumInput.value);
+        if (italianInput.checked) {
+          userCriteria["categories"].push(italianInput.value);
         }
-
-        if (movietheatersInput.checked) {
-          userCriteria.push(artmusmInput.value);
+        if (mediterraneanInput.checked) {
+          userCriteria["categories"].push(mediterraneanInput.value);
         }
-
-
-
 
         // price
 
-        price1Input
-
         if (price1Input.checked) {
-          userCriteria.push(price1Input.value);
+          userCriteria["price"].push(price1Input.value);
         }
         if (price2Input.checked) {
-          userCriteria.push(price2Input.value);
+          userCriteria["price"].push(price2Input.value);
         }
 
         if (price3Input.checked) {
-          userCriteria.push(price3Input.value);
+          userCriteria["price"].push(price3Input.value);
         }
 
         if (price4Input.checked) {
-          userCriteria.push(price4Input.value);
+          userCriteria["price"].push(price4Input.value);
         }
-        
-        /*
-        for (var i = 1; i < 5; i++) {
-          if (price + i  Input)
-        }
-       */
       
       console.log(userCriteria)
       
