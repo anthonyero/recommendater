@@ -14,6 +14,7 @@ var randomIndex = 0;
 
 
 
+
 submitBtn.addEventListener("click", formRetrieval);
 
 // User Criteria Retrieval and url request string formation
@@ -155,6 +156,24 @@ function renderResult(returnedObject) {
 
 }
 
+/*
+const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=35805&page=1';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '93e394b762msh5ff717525639df9p1be66djsn66e4b499732d',
+		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
+*/
 //Defining variables for search input and button
 const searchInput = document.querySelector(".search-input");
 const searchBtn = document.querySelector(".search-btn");
