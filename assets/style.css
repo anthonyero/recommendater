@@ -39,3 +39,8 @@ h1{
     flex: 0 0 400px;
 
 }
+
+#map{
+    height: 50%;
+    width: 50%;
+}
