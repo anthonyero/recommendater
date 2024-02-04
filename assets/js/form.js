@@ -10,6 +10,14 @@ var price2Input = document.getElementById("price2");
 var price3Input = document.getElementById("price3");
 var price4Input = document.getElementById("price4");
 var resultsElement = document.querySelector(".results");
+var tailWindResultsElement = document.querySelector(".tailwind-results");
+var locationImageElement = document.querySelector(".locationImage");
+var restaurantNameElement = document.querySelector(".restaurantName");
+var menuElement = document.querySelector(".menu")
+var openStatusElement = document.querySelector(".open-status");
+var averageRatingElement = document.querySelector(".average-rating");
+var priceTagElement = document.querySelector(".price-tag");
+var cuisineTagsElement = document.querySelector(".cuisine-tags")
 
 var randomIndex = 0;
 
@@ -19,6 +27,8 @@ var userCriteria = {
 }
 
 var filteredResults = [];
+
+var returnedJSONObject;
 
 submitBtn.addEventListener("click", formRetrieval);
 
@@ -68,8 +78,8 @@ function formRetrieval () {
 
 
 
-function retrieveTravelAdvisorAPI () {
-  var randomPage = Math.floor(Math.random() * 298) // The API indicates it has 298 pages of data for Chicago
+async function retrieveTravelAdvisorAPI () {
+  var randomPage = Math.floor(Math.random() * 30) // The API indicates it has 298 pages of data for Chicago but I was getting restaurants with terrible ratings. Lowering to 30 t
   const requestURL = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=35805&page=' + randomPage;
   const options = {
 	method: 'GET',
@@ -78,15 +88,19 @@ function retrieveTravelAdvisorAPI () {
 		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
 	}
   };
-  /* UNCOMMENT FOR TESTING AND FOR DEPLOYMENT
-  fetch(requestURL, options) 
+  //UNCOMMENT FOR TESTING AND FOR DEPLOYMENT
+
+  await fetch(requestURL, options) 
     .then(function (response) {
       return response.json();
     })
     .then (function (data){
       console.log(data)
-      filterResults(data);
-    }) */
+      returnedJSONObject = data;
+      // filterResults(data); // Uncomment out and relink to filterResults() once functional
+      renderResult(returnedJSONObject)
+    }) 
+    
 }
 
 function filterResults(returnedObject) {
@@ -99,8 +113,40 @@ function filterResults(returnedObject) {
 }
 
 function renderResult(returnedObject) {
+  /* For use with functioning filterResult function
   randomIndex = Math.floor(Math.random() * filteredResults.length);
   document.querySelector(".content").textContent = filteredResults[randomIndex]["name"];
+  */
+
+  randomIndex = Math.floor(Math.random() * returnedObject["data"]["data"].length);
+  console.log(randomIndex);
+  restaurantNameElement.textContent = returnedObject["data"]["data"][randomIndex]["name"];
+  if (returnedObject["data"]["data"][randomIndex]["squareImgUrl"] != null) {
+    locationImageElement.setAttribute("src", returnedObject["data"]["data"][randomIndex]["squareImgUrl"]);
+  }
+
+  if (returnedObject["data"]["data"][randomIndex]["hasMenu"]){
+    menuElement.innerHTML = "Online Menu";
+    menuElement.setAttribute("href", returnedObject["data"]["data"][randomIndex]["menuUrl"]);
+  } else {
+    menuElement.innerHTML = "No online menu provided";
+    menuElement.setAttribute("href", "")
+  }
+
+  openStatusElement.textContent = "Open Status: " + returnedObject["data"]["data"][randomIndex]["currentOpenStatusCategory"];
+  averageRatingElement.textContent = "Average Rating: " + returnedObject["data"]["data"][randomIndex]["averageRating"] + " (" + returnedObject["data"]["data"][randomIndex]["userReviewCount"] + " reviews)";
+  
+  if (returnedObject["data"]["data"][randomIndex]["priceTag"]) {
+    priceTagElement.textContent = "Price Tag: " + returnedObject["data"]["data"][randomIndex]["priceTag"];
+  } else {
+    priceTagElement.textContent = "No price information was located"
+  }
+  
+  if (returnedObject["data"]["data"][randomIndex]["establishmentTypeAndCuisineTags"] = []) {
+    cuisineTagsElement.textContent = "No cuisine tags were located"
+  } else {
+    cuisineTagsElement.textContent = "Cuisine Tags: " + returnedObject["data"]["data"][randomIndex]["establishmentTypeAndCuisineTags"].join(" | ");;
+  }
  
   // Start adding new elements adding text content modifiers to reflect the randomly selected option
 
@@ -108,6 +154,5 @@ function renderResult(returnedObject) {
     resultsElement.removeAttribute("style", ".hidden");
   }
 
- 
 }
 
