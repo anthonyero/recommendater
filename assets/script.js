@@ -1,21 +1,35 @@
 let map;
-let infoWindow;
+let service;
+let infowindow;
 
 //Initializes the map.
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 6
+  const chicago = new google.maps.LatLng(41.8781, -87.6298);
+
+  infowindow = new google.maps.InfoWindow();
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: chicago,
+    zoom: 14.5,
   });
-  infoWindow = new google.maps.InfoWindow;
   
-//Event handler for map click.
-google.maps.event.addListener(map, 'click', function(event) {
-  let latitude = event.latLng.lat();
-  let longitude = event.latLng.lng();
-  let pos = {
-    lat: latitude,
-    lng: longitude
-  };
+//produces results onto map of places in the map and places maker on specified location.
+const request = {
+  query: "Willis Tower",
+  fields: ["name", "geometry"],
+};
+
+service = new google.maps.places.PlacesService(map);
+service.findPlaceFromQuery(request, (results, status) => {
+  if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+    for (let i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+
+    map.setCenter(results[0].geometry.location);
+  }
+});
+}
+
   fetch("https://google-maps-geocoding.p.rapidapi.com/geocode/json?language=en&latlng=" + latitude + "," + longitude, {
     method: "GET",
     headers: {
