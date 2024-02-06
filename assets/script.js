@@ -22,21 +22,26 @@ const request = {
 };
 
 //a service variable is assigned to google.maps.Maps. This uses Map object.
+//findPlaceFromQuery method is called on the service object with the request object and a callback function.
 service = new google.maps.places.PlacesService(map);
 service.findPlaceFromQuery(request, (results, status) => {
+  //In the callback function, if status is ok and there are results, a loop is used to iterate through the results.
   if (status === google.maps.places.PlacesServiceStatus.OK && results) {
     for (let i = 0; i < results.length; i++) {
+      //the createMarker function is called for each result to create marker on map.
       createMarker(results[i]);
     }
-
+    //the center of the map is the first result.
     map.setCenter(results[0].geometry.location);
   }
 });
 }
 
+//The createMarker function is defined. It checks to see if it has geometry and location. If not, it returns.
 function createMarker(place) {
   if (!place.geometry || !place.geometry.location) return;
 
+  //a new marker object is created.
   const marker = new google.maps.Marker({
     map,
     position: place.geometry.location,
