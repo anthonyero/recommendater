@@ -21,8 +21,12 @@ var menuElement = document.querySelector(".menu")
 var openStatusElement = document.querySelector(".open-status");
 var averageRatingElement = document.querySelector(".average-rating");
 var priceTagElement = document.querySelector(".price-tag");
-var cuisineTagsElement = document.querySelector(".cuisine-tags")
-
+var cuisineTagsElement = document.querySelector(".cuisine-tags");
+var mapContainer = document.querySelector(".map-container");
+var previousRecommendationsList = document.querySelector(".previous-recommendations-list");
+var previousRecommendationsLink = document.querySelector(".previous-recommendations-link");
+var previousRecommendationsHeading = document.querySelector(".previous-recommendations-heading");
+var homepageButton = document.querySelector(".homepage-link");
 var randomIndex = 0;
 
 
@@ -34,8 +38,11 @@ var returnedJSONObjectData;
 
 var filteredResults = [];
 
-
+previousRecommendationsLink.addEventListener("click", viewPreviousRecommendations);
 submitBtn.addEventListener("click", formRetrieval);
+homepageButton.addEventListener("click", function () {
+  window.location.reload();
+})
 
 // User Criteria Retrieval and url request string formation
 function formRetrieval () {
@@ -65,7 +72,7 @@ function formRetrieval () {
 
     
       
-      console.log(userCriteria)
+      //console.log(userCriteria)
       
       retrieveTravelAdvisorAPI()
 }
@@ -89,7 +96,7 @@ async function retrieveTravelAdvisorAPI () {
       return response.json();
     })
     .then (function (data){
-      console.log(data)
+      //console.log(data)
       returnedJSONObjectData = data["data"]["data"];
       if (userCriteria["categories"] === "") {
         renderResult(returnedJSONObjectData);
@@ -132,7 +139,7 @@ function renderResult(returnedObject) {
   */
 
   randomIndex = Math.floor(Math.random() * returnedObject.length);
-  console.log(randomIndex);
+  //console.log(randomIndex);
   restaurantNameElement.textContent = returnedObject[randomIndex]["name"];
   if (returnedObject[randomIndex]["squareImgUrl"] != null) {
     locationImageElement.setAttribute("src", returnedObject[randomIndex]["squareImgUrl"]);
@@ -181,3 +188,42 @@ currentList.push(returnedObject[randomIndex]); // Append the latest recommendati
 localStorage.setItem("previousRecommendations", JSON.stringify(currentList));
 }
 
+
+
+function viewPreviousRecommendations() {
+  boxes.forEach(box => {
+    if (!(box.style.display = 'none')) {
+      box.style.display = 'none'
+    }
+  })
+
+  if (!tailWindResultsElement.hasAttribute("style", "display: none;")) {
+    tailWindResultsElement.setAttribute("style", "display: none; ");
+  }
+
+  if (!mapContainer.hasAttribute("style", "display: none;")) {
+    mapContainer.setAttribute("style", "display: none; ");
+  }
+
+  if (previousRecommendationsHeading.hasAttribute("style", "display: none;")) {
+    previousRecommendationsHeading.removeAttribute("style", "display: none;");
+  }
+
+  while (previousRecommendationsList.hasChildNodes()) {
+    previousRecommendationsList.removeChild(previousRecommendationsList.firstChild) // As long as the list container has child elements, it will delete the first. This repeats until the list container doesn't have any child elements
+}
+
+var currentList = JSON.parse(localStorage.getItem("previousRecommendations"));
+for (var i = 0; i < currentList.length; i++) {
+    var name = currentList[i]["name"];
+    var reviews = "Average Rating: " + currentList[i]["averageRating"] + " (" + currentList[i]["userReviewCount"] + " reviews)"
+    var categories = currentList[i]["establishmentTypeAndCuisineTags"].join(" | ")
+    var prices = currentList[i]["priceTag"]
+
+    var rowListElement = document.createElement("li");
+    rowListElement.textContent = name + "; " + reviews + "; " + categories + "; " + prices;
+    previousRecommendationsList.appendChild(rowListElement)
+  
+
+}
+}
