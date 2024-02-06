@@ -2,10 +2,12 @@ let map;
 let service;
 let infowindow;
 
-//Initializes the map. Const chicago
+//Initializes the map. Const chicago stores the coordinates.
 function initMap() {
   const chicago = new google.maps.LatLng(41.8781, -87.6298);
 
+  //infowindow is initialized as a new instance of google.maps.InfoWindow.
+  //variable map is assigned to google.maps.Maps.
   infowindow = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById("map"), {
     center: chicago,
@@ -13,11 +15,13 @@ function initMap() {
   });
   
 //produces results onto map of places in the map and places maker on specified location.
+//Chicago. Request object is created to specify query and fields for the findPlaceFromQuery method.
 const request = {
   query: "Willis Tower",
   fields: ["name", "geometry"],
 };
 
+//a service variable is assigned to google.maps.Maps. This uses Map object.
 service = new google.maps.places.PlacesService(map);
 service.findPlaceFromQuery(request, (results, status) => {
   if (status === google.maps.places.PlacesServiceStatus.OK && results) {
