@@ -2,7 +2,7 @@ let map;
 let service;
 let infowindow;
 
-//Initializes the map.
+//Initializes the map. Const chicago
 function initMap() {
   const chicago = new google.maps.LatLng(41.8781, -87.6298);
 
