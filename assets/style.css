@@ -37,9 +37,23 @@ header {
 
 }
 
+.map-container{
+    border-radius: 20%;
+    border-style: solid;
+    border-color: #ffffff78;
+    border-width: 1px;
+    padding: 30px;
+    height: 400px;
+    width: 400px;
+    display: grid;
+    flex-wrap: wrap;
+    margin-left: 20%;
+}
+
 #map {
-    height: 50%;
-    width: 50%;
+    height: 200%;
+    width: 200%;
+    padding: 10%;
 }
 
 #title{
