@@ -1,12 +1,16 @@
 let map;
 let service;
 let infowindow;
+var mapContainer = document.querySelector('.map-container');
 var viewMapBtn = document.querySelector('.view-map-btn');
 
   viewMapBtn.addEventListener('click', initMap);
 
 //Initializes the map. Const chicago stores the coordinates.
 function initMap() {
+  if (mapContainer.hasAttribute('style', 'display: none;')){
+    mapContainer.removeAttribute('style', 'display: none;');
+  }
   const chicago = new google.maps.LatLng(41.8781, -87.6298);
 
   //infowindow is initialized as a new instance of google.maps.InfoWindow.
@@ -14,7 +18,7 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById("map"), {
     center: chicago,
-    zoom: 14.5,
+    zoom: 13,
   });
   
 //produces results onto map of places in the map and places maker on specified location.
@@ -58,6 +62,7 @@ function createMarker(place) {
 
 function displayMarker() {
   marker.setMap(map);
+
 }
 
 window.initMap = initMap;
