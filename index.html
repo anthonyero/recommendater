@@ -14,9 +14,9 @@
   <header>
     <h1>Date Night in Chicago Suggestion App</h1>
   </header>
-
+<br>
   <div class="box">
-    <h2>Price</h2>
+    <h2><b id="title">Price</b></h2>
     <label for="price1">$</label>
     <input type="checkbox" id="price1" value="$">
     <label for="price2">$$</label>
@@ -26,11 +26,11 @@
     <label for="price4">$$$$</label>
     <input type="checkbox" id="price4" value="$$$$">
   </div>
-
+<br>
 
   <div class="box mb-6">
-    <h1>Restaurant Suggestion</h1>
-    </label for="Choose craving">Choose Craving:</label><br>
+    <h2><b id="title">Restaurant Suggestion</b></h2>
+    </label for="Choose craving" id="sub-title">Choose Craving:</label><br>
 
     <input type="checkbox" id="American" name="American" value="American">
     <label for="American">American</label><br>
@@ -43,6 +43,9 @@
     <input type="checkbox" id="Mediterranean" name="Mediterranean" value="Mediterranean">
     <label for="Mediterranean">Mediterranean</label><br>
     <input type="submit" class="submit-button">
+  </div>
+    <div class="map-container">
+      <div id="map" style="position: relative; overflow: hidden;"></div>
   </div>
 
 
