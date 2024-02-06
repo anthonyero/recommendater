@@ -1,10 +1,14 @@
 var submitBtn = document.querySelector(".submit-button");
+var boxes = document.querySelectorAll(".box")
 
+/*
 var americanInput = document.getElementById("American");
 var chineseInput = document.getElementById("Chinese");
 var mexicanInput = document.getElementById("Mexican");
 var italianInput = document.getElementById("Italian");
 var mediterraneanInput = document.getElementById("Mediterranean")
+*/
+// var restaurantCategoryInput = document.getElementsByName("restaurant").checked;
 var price1Input = document.getElementById("price1");
 var price2Input = document.getElementById("price2");
 var price3Input = document.getElementById("price3");
@@ -22,13 +26,12 @@ var cuisineTagsElement = document.querySelector(".cuisine-tags")
 var randomIndex = 0;
 
 var userCriteria = {
-  categories: [],
-  price: []
+  price: [],
+  categories: ""
 }
+var returnedJSONObjectData;
 
 var filteredResults = [];
-
-var returnedJSONObject;
 
 submitBtn.addEventListener("click", formRetrieval);
 
@@ -37,24 +40,26 @@ function formRetrieval () {
   event.preventDefault();
 
     // Pull values from form 
-        // categories (TO DO UPDATE)
+      /* FOR CHECKBOX
         if (americanInput.checked) {
-          userCriteria["categories"].push(americanInput.value);
+          userCriteria["categories"] = (americanInput.value);
         }
         if (chineseInput.checked) {
-          userCriteria["categories"].push(chineseInput.value);
+          userCriteria["categories"] = (chineseInput.value);
         }
         if (mexicanInput.checked) {
-          userCriteria["categories"].push(mexicanInput.value);
+          userCriteria["categories"] = (mexicanInput.value);
         }
         if (italianInput.checked) {
-          userCriteria["categories"].push(italianInput.value);
+          userCriteria["categories"] = (italianInput.value);
         }
         if (mediterraneanInput.checked) {
           userCriteria["categories"].push(mediterraneanInput.value);
         }
-
-        // price (TO DO UPDATE VALUES IN HTML)
+        */
+      
+        userCriteria["categories"] = document.querySelector('input[name="restaurant"]:checked').value;
+       
 
         if (price1Input.checked) {
           userCriteria["price"].push(price1Input.value);
@@ -84,7 +89,7 @@ async function retrieveTravelAdvisorAPI () {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '93e394b762msh5ff717525639df9p1be66djsn66e4b499732d',
+		'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
 		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
 	}
   };
@@ -96,17 +101,36 @@ async function retrieveTravelAdvisorAPI () {
     })
     .then (function (data){
       console.log(data)
-      returnedJSONObject = data;
-      // filterResults(data); // Uncomment out and relink to filterResults() once functional
-      renderResult(returnedJSONObject)
+      returnedJSONObjectData = data["data"]["data"];
+      if (userCriteria["categories"] === "") {
+        renderResult(returnedJSONObjectData);
+      } else {
+        // filterResults(data); // Uncomment out and relink to filterResults() once functional
+        filterResults(returnedJSONObjectData);
+      }
     }) 
     
 }
-
 function filterResults(returnedObject) {
   filteredResults = [];
+  // We want to conclude with a list that satisfies the following condition 
+    // (list of acceptable prices) & (list of categories)
+  // filteredResults = returnedJSONObject["data"]["data"].filter((restaurant) => returnedJSONObject[restaurant]["priceTag"].includes(userCriteria["price"]))
+  
+  for (var i = 0; i < returnedObject.length; i++) {
+    if (returnedObject[i]["establishmentTypeAndCuisineTags"].includes(userCriteria["categories"])) {
+      filteredResults.push(returnedObject[i]);
+    }
+  }
+  
+  if (filteredResults.length == 0) {
+    retrieveTravelAdvisorAPI();
+  } else {
+    renderResult(filteredResults);
+  }
+
   // Define criteria and append objects from returnedObject that satisfy our filtered criteria
-  // if filteredResults develops an an array with 0 results, call retrieveTravelAdivsorAPI again
+  // if filteredResults develops an an array with 0 results, call retrieveTravelAdvisorAPI again
  
   // if filteredResults.length > 0
     // Call renderResult() function
@@ -118,40 +142,43 @@ function renderResult(returnedObject) {
   document.querySelector(".content").textContent = filteredResults[randomIndex]["name"];
   */
 
-  randomIndex = Math.floor(Math.random() * returnedObject["data"]["data"].length);
+  randomIndex = Math.floor(Math.random() * returnedObject.length);
   console.log(randomIndex);
-  restaurantNameElement.textContent = returnedObject["data"]["data"][randomIndex]["name"];
-  if (returnedObject["data"]["data"][randomIndex]["squareImgUrl"] != null) {
-    locationImageElement.setAttribute("src", returnedObject["data"]["data"][randomIndex]["squareImgUrl"]);
+  restaurantNameElement.textContent = returnedObject[randomIndex]["name"];
+  if (returnedObject[randomIndex]["squareImgUrl"] != null) {
+    locationImageElement.setAttribute("src", returnedObject[randomIndex]["squareImgUrl"]);
   }
 
-  if (returnedObject["data"]["data"][randomIndex]["hasMenu"]){
+  if (returnedObject[randomIndex]["hasMenu"]){
     menuElement.innerHTML = "Online Menu";
-    menuElement.setAttribute("href", returnedObject["data"]["data"][randomIndex]["menuUrl"]);
+    menuElement.setAttribute("href", returnedObject[randomIndex]["menuUrl"]);
   } else {
     menuElement.innerHTML = "No online menu provided";
     menuElement.setAttribute("href", "")
   }
 
-  openStatusElement.textContent = "Open Status: " + returnedObject["data"]["data"][randomIndex]["currentOpenStatusCategory"];
-  averageRatingElement.textContent = "Average Rating: " + returnedObject["data"]["data"][randomIndex]["averageRating"] + " (" + returnedObject["data"]["data"][randomIndex]["userReviewCount"] + " reviews)";
+  openStatusElement.textContent = "Open Status: " + returnedObject[randomIndex]["currentOpenStatusCategory"];
+  averageRatingElement.textContent = "Average Rating: " + returnedObject[randomIndex]["averageRating"] + " (" + returnedObject[randomIndex]["userReviewCount"] + " reviews)";
   
-  if (returnedObject["data"]["data"][randomIndex]["priceTag"]) {
-    priceTagElement.textContent = "Price Tag: " + returnedObject["data"]["data"][randomIndex]["priceTag"];
+  if (returnedObject[randomIndex]["priceTag"]) {
+    priceTagElement.textContent = "Price Tag: " + returnedObject[randomIndex]["priceTag"];
   } else {
     priceTagElement.textContent = "No price information was located"
   }
   
-  if (returnedObject["data"]["data"][randomIndex]["establishmentTypeAndCuisineTags"] = []) {
+  if (returnedObject[randomIndex]["establishmentTypeAndCuisineTags"] == []) {
     cuisineTagsElement.textContent = "No cuisine tags were located"
   } else {
-    cuisineTagsElement.textContent = "Cuisine Tags: " + returnedObject["data"]["data"][randomIndex]["establishmentTypeAndCuisineTags"].join(" | ");;
+    cuisineTagsElement.textContent = "Cuisine Tags: " + returnedObject[randomIndex]["establishmentTypeAndCuisineTags"].join(" | ");;
   }
  
   // Start adding new elements adding text content modifiers to reflect the randomly selected option
+  boxes.forEach(box => {
+    box.style.display = 'none';
+  })
 
-  if (resultsElement.hasAttribute("style", ".hidden")) {
-    resultsElement.removeAttribute("style", ".hidden");
+  if (tailWindResultsElement.hasAttribute("style", "display: none;")) {
+    tailWindResultsElement.removeAttribute("style", "display: none; ");
   }
 
 }
