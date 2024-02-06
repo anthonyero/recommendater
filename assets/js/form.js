@@ -9,10 +9,10 @@ var italianInput = document.getElementById("Italian");
 var mediterraneanInput = document.getElementById("Mediterranean")
 */
 // var restaurantCategoryInput = document.getElementsByName("restaurant").checked;
-var price1Input = document.getElementById("price1");
+/* var price1Input = document.getElementById("price1");
 var price2Input = document.getElementById("price2");
 var price3Input = document.getElementById("price3");
-var price4Input = document.getElementById("price4");
+var price4Input = document.getElementById("price4"); */
 var resultsElement = document.querySelector(".results");
 var tailWindResultsElement = document.querySelector(".tailwind-results");
 var locationImageElement = document.querySelector(".locationImage");
@@ -25,6 +25,7 @@ var cuisineTagsElement = document.querySelector(".cuisine-tags")
 
 var randomIndex = 0;
 
+
 var userCriteria = {
   price: [],
   categories: ""
@@ -32,6 +33,7 @@ var userCriteria = {
 var returnedJSONObjectData;
 
 var filteredResults = [];
+
 
 submitBtn.addEventListener("click", formRetrieval);
 
@@ -61,20 +63,7 @@ function formRetrieval () {
         userCriteria["categories"] = document.querySelector('input[name="restaurant"]:checked').value;
        
 
-        if (price1Input.checked) {
-          userCriteria["price"].push(price1Input.value);
-        }
-        if (price2Input.checked) {
-          userCriteria["price"].push(price2Input.value);
-        }
-
-        if (price3Input.checked) {
-          userCriteria["price"].push(price3Input.value);
-        }
-
-        if (price4Input.checked) {
-          userCriteria["price"].push(price4Input.value);
-        }
+    
       
       console.log(userCriteria)
       
@@ -181,5 +170,14 @@ function renderResult(returnedObject) {
     tailWindResultsElement.removeAttribute("style", "display: none; ");
   }
 
+// Check if a list for locally stored previousRecommendations exist. If not, create a an empty string object, else retrieve
+if (localStorage.getItem("previousRecommendations") === null) {
+localStorage.setItem("previousRecommendations", JSON.stringify([]));
+}
+// Retrieve locally stored previousRecommendations and append new userInfo to it
+var currentList = JSON.parse(localStorage.getItem("previousRecommendations")); // Retrieve and convert string back to an array
+currentList.push(returnedObject[randomIndex]); // Append the latest recommendation object object 
+// Save array turned in to a JavaScript object string
+localStorage.setItem("previousRecommendations", JSON.stringify(currentList));
 }
 
