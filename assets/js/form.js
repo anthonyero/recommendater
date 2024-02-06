@@ -1,4 +1,5 @@
 var submitBtn = document.querySelector(".submit-button");
+var boxes = document.querySelectorAll(".box")
 
 /*
 var americanInput = document.getElementById("American");
@@ -56,8 +57,9 @@ function formRetrieval () {
           userCriteria["categories"].push(mediterraneanInput.value);
         }
         */
+      
         userCriteria["categories"] = document.querySelector('input[name="restaurant"]:checked').value;
-
+       
 
         if (price1Input.checked) {
           userCriteria["price"].push(price1Input.value);
@@ -87,7 +89,7 @@ async function retrieveTravelAdvisorAPI () {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '93e394b762msh5ff717525639df9p1be66djsn66e4b499732d',
+		'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
 		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
 	}
   };
@@ -128,7 +130,7 @@ function filterResults(returnedObject) {
   }
 
   // Define criteria and append objects from returnedObject that satisfy our filtered criteria
-  // if filteredResults develops an an array with 0 results, call retrieveTravelAdivsorAPI again
+  // if filteredResults develops an an array with 0 results, call retrieveTravelAdvisorAPI again
  
   // if filteredResults.length > 0
     // Call renderResult() function
@@ -164,16 +166,19 @@ function renderResult(returnedObject) {
     priceTagElement.textContent = "No price information was located"
   }
   
-  if (returnedObject[randomIndex]["establishmentTypeAndCuisineTags"] = []) {
+  if (returnedObject[randomIndex]["establishmentTypeAndCuisineTags"] == []) {
     cuisineTagsElement.textContent = "No cuisine tags were located"
   } else {
     cuisineTagsElement.textContent = "Cuisine Tags: " + returnedObject[randomIndex]["establishmentTypeAndCuisineTags"].join(" | ");;
   }
  
   // Start adding new elements adding text content modifiers to reflect the randomly selected option
+  boxes.forEach(box => {
+    box.style.display = 'none';
+  })
 
-  if (tailWindResultsElement.hasAttribute("style", ".hidden")) {
-    tailWindResultsElement.removeAttribute("style", ".hidden");
+  if (tailWindResultsElement.hasAttribute("style", "display: none;")) {
+    tailWindResultsElement.removeAttribute("style", "display: none; ");
   }
 
 }
