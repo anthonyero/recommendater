@@ -48,23 +48,4 @@ function displayMarker() {
   marker.setMap(map);
 }
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    // Process the fetched data
-    console.log(data);
-    // Call a function to create markers on Google Maps
-    createMarkers(data);
-  })
-  .catch(error => console.error('Error fetching data:', error));
-
-  // Loop through TripAdvisor data and create markers
-  data.forEach(place => {
-    const marker = new google.maps.Marker({
-      position: { lat: place.latitude, lng: place.longitude },
-      map: map,
-      title: place.name,
-    });
-  });
-
 window.initMap = initMap;
