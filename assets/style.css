@@ -10,7 +10,7 @@ body {
 header {
     text-align: center;
     margin-right: 10%;
-    color: rgba(0, 0, 0, 0.737);
+    color: rgba(0, 0, 0, 0.819);
     font-size: 25px;
     background-color: #ffffff78;
     padding: 2%;
@@ -26,21 +26,23 @@ header {
 
 }
 
-h1 {
-    text-align: left;
-}
-
 .box {
     background-color: #ffffff78;
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 2%;
     flex: 0 0 400px;
+    margin-right: 10%;
 
 }
 
 #map {
     height: 50%;
     width: 50%;
+}
+
+#title{
+    font-size:200%;
+    text-align: center;
 }
