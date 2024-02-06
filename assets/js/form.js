@@ -9,10 +9,10 @@ var italianInput = document.getElementById("Italian");
 var mediterraneanInput = document.getElementById("Mediterranean")
 */
 // var restaurantCategoryInput = document.getElementsByName("restaurant").checked;
-var price1Input = document.getElementById("price1");
+/* var price1Input = document.getElementById("price1");
 var price2Input = document.getElementById("price2");
 var price3Input = document.getElementById("price3");
-var price4Input = document.getElementById("price4");
+var price4Input = document.getElementById("price4"); */
 var resultsElement = document.querySelector(".results");
 var tailWindResultsElement = document.querySelector(".tailwind-results");
 var locationImageElement = document.querySelector(".locationImage");
@@ -21,9 +21,14 @@ var menuElement = document.querySelector(".menu")
 var openStatusElement = document.querySelector(".open-status");
 var averageRatingElement = document.querySelector(".average-rating");
 var priceTagElement = document.querySelector(".price-tag");
-var cuisineTagsElement = document.querySelector(".cuisine-tags")
-
+var cuisineTagsElement = document.querySelector(".cuisine-tags");
+var mapContainer = document.querySelector(".map-container");
+var previousRecommendationsList = document.querySelector(".previous-recommendations-list");
+var previousRecommendationsLink = document.querySelector(".previous-recommendations-link");
+var previousRecommendationsHeading = document.querySelector(".previous-recommendations-heading");
+var homepageButton = document.querySelector(".homepage-link");
 var randomIndex = 0;
+
 
 var userCriteria = {
   price: [],
@@ -33,7 +38,11 @@ var returnedJSONObjectData;
 
 var filteredResults = [];
 
+previousRecommendationsLink.addEventListener("click", viewPreviousRecommendations);
 submitBtn.addEventListener("click", formRetrieval);
+homepageButton.addEventListener("click", function () {
+  window.location.reload();
+})
 
 // User Criteria Retrieval and url request string formation
 function formRetrieval () {
@@ -61,22 +70,9 @@ function formRetrieval () {
         userCriteria["categories"] = document.querySelector('input[name="restaurant"]:checked').value;
        
 
-        if (price1Input.checked) {
-          userCriteria["price"].push(price1Input.value);
-        }
-        if (price2Input.checked) {
-          userCriteria["price"].push(price2Input.value);
-        }
-
-        if (price3Input.checked) {
-          userCriteria["price"].push(price3Input.value);
-        }
-
-        if (price4Input.checked) {
-          userCriteria["price"].push(price4Input.value);
-        }
+    
       
-      console.log(userCriteria)
+      //console.log(userCriteria)
       
       retrieveTravelAdvisorAPI()
 }
@@ -100,7 +96,7 @@ async function retrieveTravelAdvisorAPI () {
       return response.json();
     })
     .then (function (data){
-      console.log(data)
+      //console.log(data)
       returnedJSONObjectData = data["data"]["data"];
       if (userCriteria["categories"] === "") {
         renderResult(returnedJSONObjectData);
@@ -143,7 +139,7 @@ function renderResult(returnedObject) {
   */
 
   randomIndex = Math.floor(Math.random() * returnedObject.length);
-  console.log(randomIndex);
+  //console.log(randomIndex);
   restaurantNameElement.textContent = returnedObject[randomIndex]["name"];
   if (returnedObject[randomIndex]["squareImgUrl"] != null) {
     locationImageElement.setAttribute("src", returnedObject[randomIndex]["squareImgUrl"]);
@@ -181,5 +177,53 @@ function renderResult(returnedObject) {
     tailWindResultsElement.removeAttribute("style", "display: none; ");
   }
 
+// Check if a list for locally stored previousRecommendations exist. If not, create a an empty string object, else retrieve
+if (localStorage.getItem("previousRecommendations") === null) {
+localStorage.setItem("previousRecommendations", JSON.stringify([]));
+}
+// Retrieve locally stored previousRecommendations and append new userInfo to it
+var currentList = JSON.parse(localStorage.getItem("previousRecommendations")); // Retrieve and convert string back to an array
+currentList.push(returnedObject[randomIndex]); // Append the latest recommendation object object 
+// Save array turned in to a JavaScript object string
+localStorage.setItem("previousRecommendations", JSON.stringify(currentList));
 }
 
+
+
+function viewPreviousRecommendations() {
+  boxes.forEach(box => {
+    if (!(box.style.display = 'none')) {
+      box.style.display = 'none'
+    }
+  })
+
+  if (!tailWindResultsElement.hasAttribute("style", "display: none;")) {
+    tailWindResultsElement.setAttribute("style", "display: none; ");
+  }
+
+  if (!mapContainer.hasAttribute("style", "display: none;")) {
+    mapContainer.setAttribute("style", "display: none; ");
+  }
+
+  if (previousRecommendationsHeading.hasAttribute("style", "display: none;")) {
+    previousRecommendationsHeading.removeAttribute("style", "display: none;");
+  }
+
+  while (previousRecommendationsList.hasChildNodes()) {
+    previousRecommendationsList.removeChild(previousRecommendationsList.firstChild) // As long as the list container has child elements, it will delete the first. This repeats until the list container doesn't have any child elements
+}
+
+var currentList = JSON.parse(localStorage.getItem("previousRecommendations"));
+for (var i = 0; i < currentList.length; i++) {
+    var name = currentList[i]["name"];
+    var reviews = "Average Rating: " + currentList[i]["averageRating"] + " (" + currentList[i]["userReviewCount"] + " reviews)"
+    var categories = currentList[i]["establishmentTypeAndCuisineTags"].join(" | ")
+    var prices = currentList[i]["priceTag"]
+
+    var rowListElement = document.createElement("li");
+    rowListElement.textContent = name + "; " + reviews + "; " + categories + "; " + prices;
+    previousRecommendationsList.appendChild(rowListElement)
+  
+
+}
+}
