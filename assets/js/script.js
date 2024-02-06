@@ -1,6 +1,9 @@
 let map;
 let service;
 let infowindow;
+var viewMapBtn = document.querySelector('.view-map-btn');
+
+  viewMapBtn.addEventListener('click', initMap);
 
 //Initializes the map. Const chicago stores the coordinates.
 function initMap() {
@@ -17,7 +20,7 @@ function initMap() {
 //produces results onto map of places in the map and places maker on specified location.
 //Chicago. Request object is created to specify query and fields for the findPlaceFromQuery method.
 const request = {
-  query: "Willis Tower",
+  query: document.querySelector('.restaurantName').textContent,
   fields: ["name", "geometry"],
 };
 
