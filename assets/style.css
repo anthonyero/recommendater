@@ -1,19 +1,17 @@
 body {
-    background-image:url(Champagne.webp);
+   /* background-image: url(Champagne.webp);*/
+   
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-attachment: cover;
-    
 
-}
-.header{
-    color: rgba(255, 0, 0, 0.915);
 }
 
 header {
     text-align: center;
-    color: rgba(0, 0, 0, 0.921);
+    margin-right: 10%;
+    color: rgba(0, 0, 0, 0.819);
     font-size: 25px;
     background-color: #ffffff78;
     padding: 2%;
@@ -21,21 +19,19 @@ header {
     border-radius: 10px;
 }
 
-.previous-results-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: black;
-}
 .homepage-link {
     font-family: "Protest Riot", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: rgba(255, 0, 0, 0.915);
-    font-size: 4rem;
+    color: red;
+    font-size: 5rem;
 }
 
-
+.previous-results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .previous-recommendations-link {
     font-size: 1.75rem;
@@ -59,16 +55,9 @@ header {
 
 .submit-button {
     font-size: large;
-    background-color: rgba(238, 138, 138, 0.723);
-    color: rgba(190, 25, 25, 0.848) ;
-    border-color: rgba(190, 25, 25, 0.848);
-    border-width: 1px;
+    background-color: rgba(238, 138, 138, 0.429);
+    color: rgba(190, 25, 25, 0.766);
    
-
-}
-.start-button{
-    background-color: rgba(131, 128, 128, 0.758);
-    border-color: rgba(131, 128, 128, 0.758);
 
 }
 
@@ -79,6 +68,7 @@ header {
     border-radius: 10px;
     padding: 2%;
     flex: 0 0 400px;
+    margin-right: 10%;
 
 }
 
