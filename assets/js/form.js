@@ -86,7 +86,7 @@ async function retrieveTravelAdvisorAPI () {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '751d131db4mshd9e5f13cb0f5721p1c4b46jsn5a049a43611d',
+		'X-RapidAPI-Key': '899330716cmshca17c3fcde12d52p13e1dfjsn8c3013e0249c',
 		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
 	}
   };

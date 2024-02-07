@@ -10,7 +10,6 @@ body {
 
 header {
     text-align: center;
-    margin-right: 10%;
     color: rgba(0, 0, 0, 0.819);
     font-size: 25px;
     background-color: #ffffff78;
@@ -35,6 +34,7 @@ header {
 
 .previous-recommendations-link {
     font-size: 1.75rem;
+    align-items: center;
 }
 
 .previous-recommendations-heading {
@@ -57,8 +57,13 @@ header {
     font-size: large;
     background-color: rgba(238, 138, 138, 0.429);
     color: rgba(190, 25, 25, 0.766);
-   
+    padding: 9px;
+    border-radius: 9px;
+}
 
+.submit-button:active {
+    background-color: #08e10078;
+    color: green;
 }
 
 .box {
@@ -101,4 +106,84 @@ header {
 #title{
     font-size:200%;
     text-align: center;
+}
+
+@media screen and (min-width: 320px) { /* iPhone SE and iPhone 14 Pro Max utilized as reference */
+    .previous-results-container {
+      margin-left: 91px;
+      width: min-content;
+    }
+    .previous-recommendations-link {
+        font-size: 2.5rem;
+        align-items: center;
+        margin-left: 20%;
+    }
+
+    .previous-recommendations-heading {
+        font-size: 2.1rem;
+    }
+    
+    .previous-recommendations-list {
+        display: flexbox;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .previous-recommendations-list li {
+        font-size: 2rem;
+        width: 100%;        
+        border-bottom: 2px;
+        border-style: outset;
+    }
+
+    
+    .box {
+        font-size: 2rem;
+        text-align: center;
+        display: flexbox;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-right: 0%;
+        margin-left: 88px;
+    }
+
+    .box label {
+        font-size: 2rem;
+    }
+
+    .tailwind-results {
+        margin-left: 70px;
+    }
+
+    .map-container {
+        margin-left: 0%
+    }
+
+    .map-container div div {
+        height: 70%;
+        width: 70%;
+    }
+    
+}
+
+
+@media (min-width:600px) { 
+    .previous-results-container {
+        margin-left: 29%;
+        width: min-content;
+      }
+    .tailwind-results {
+        margin-left: 250px;
+    }
+
+    .map-container {
+        margin-left: 80px;
+    }
+
+    .map-container div div {
+        height: 70%;
+        width: 70%;
+    }
+    
+
 }
