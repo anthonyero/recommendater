@@ -16,7 +16,7 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById("map"), {
     center: chicago,
-    zoom: 13,
+    zoom: 15,
   });
   
 //produces results onto map of places in the map and places maker on specified location.
@@ -54,16 +54,40 @@ function createMarker(place) {
   //event listener added to marker for the "click" event.
   google.maps.event.addListener(marker, "click", () => {
     infowindow.setContent(place.name || "");
-    infowindow.open(map);
+    infowindow.open(map, marker);
   });
-}
 
-function displayMarker() {
-  marker.setMap(map);
-
+  //creates new instance of the Geocoder class provided by the Google Maps API.
+  const geocoder = new google.maps.Geocoder();
+    //calls the geocode method of the geocoder object passing in the location object as a parameter.
+    //if status on that request is ok, it proceeds.
+    //checks for at least 1 result.
+    geocoder.geocode({ 'location': place.geometry.location }, (results, status) => {
+      if (status === 'OK') {
+        if (results[0]) {
+          
+          // creates new instance of the class InfoWindow provide by the Google Maps API.
+          // If address information is available, display it in an InfoWindow. This will automatically show on map.
+          const address = results[0].formatted_address;
+          const infoWindow = new google.maps.InfoWindow({
+            content: address
+          });
+          infoWindow.open(map, marker);
+        } else {
+          console.log('No address found for this location');
+        }
+      } else {
+        console.log('Geocoder failed due to: ' + status);
+      }
+    });
+  ;
 }
 
 viewMapBtn.addEventListener('click', initMap);
+
+
+//This is for future testing and implementation of direction functionality 
+//and retrieving userLocation from browser to have that capability.
 
 //getLocation();
 
