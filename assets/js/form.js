@@ -14,6 +14,7 @@ var price2Input = document.getElementById("price2");
 var price3Input = document.getElementById("price3");
 var price4Input = document.getElementById("price4"); */
 var resultsElement = document.querySelector(".results");
+var resultsMapContainerElement = document.querySelector(".results-map-container");
 var tailWindResultsElement = document.querySelector(".tailwind-results");
 var locationImageElement = document.querySelector(".locationImage");
 var restaurantNameElement = document.querySelector(".restaurantName");
@@ -172,9 +173,13 @@ function renderResult(returnedObject) {
   boxes.forEach(box => {
     box.style.display = 'none';
   })
+  
+  if (resultsMapContainerElement.hasAttribute("style", "display: none;")) {
+    resultsMapContainerElement.removeAttribute("style", "display: none;");
+  }
 
   if (tailWindResultsElement.hasAttribute("style", "display: none;")) {
-    tailWindResultsElement.removeAttribute("style", "display: none; ");
+    tailWindResultsElement.removeAttribute("style", "display: none;");
   }
 
 // Check if a list for locally stored previousRecommendations exist. If not, create a an empty string object, else retrieve
@@ -201,6 +206,9 @@ function viewPreviousRecommendations() {
     previousRecommendationsLink.setAttribute("style", "display: none; ");
   }
   
+    if (!resultsMapContainerElement.hasAttribute("style", "display: none;")) {
+    resultsMapContainerElement.setAttribute("style", "display: none;");
+  }
 
   if (!tailWindResultsElement.hasAttribute("style", "display: none;")) {
     tailWindResultsElement.setAttribute("style", "display: none; ");
