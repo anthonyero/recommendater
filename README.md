@@ -21,7 +21,14 @@ Enjoy your date night in Chicago!
 
 ## 💻 Built with
 - [Tailwind CSS](https://tailwindcss.com/): for styling
-- [Tripadvisor](https://rapidapi.com/DataCrawler/api/tripadvisor16/)
+- [Tripadvisor](https://rapidapi.com/DataCrawler/api/tripadvisor16/): for suggestion generator
+
+
+
+Deployed site:https://orion888888.github.io/recommenDater_app/
+
+
+Github Repo: https://github.com/Orion888888/recommenDater_app
 
 ## 🙇Contributors
 [Orion888888](https://github.com/Orion888888)
@@ -33,10 +40,17 @@ Enjoy your date night in Chicago!
 [Azurez-03](https://github.com/Azurez-03)
 
 
-## 🚀 Demo
+## 🚀 Features and DEMO
 
+##### Receiving a recommendation based on a user’s selected critiera and sharing a currently open restaurant
 
+##### Recording previous recommendations with relevant information for users to reference
 
+##### A card providing the restaurant’s menu, its average rating and number of reviews, its price range, and its cuisine tags
+
+##### A user can also request a map with the location marked to view its location in the city
+
+![image](assets\Demo.png) 
 
 
 
