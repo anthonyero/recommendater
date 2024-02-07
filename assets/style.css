@@ -10,7 +10,7 @@ body {
 
 header {
     text-align: center;
-    margin-right: 10%;
+    /*margin-right: 10%; */
     color: rgba(0, 0, 0, 0.819);
     font-size: 25px;
     background-color: #ffffff78;
@@ -57,8 +57,13 @@ header {
     font-size: large;
     background-color: rgba(238, 138, 138, 0.429);
     color: rgba(190, 25, 25, 0.766);
-   
+    padding: 9px;
+    border-radius: 9px;
+}
 
+.submit-button:active {
+    background-color: #08e10078;
+    color: green;
 }
 
 .box {

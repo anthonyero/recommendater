@@ -86,7 +86,7 @@ async function retrieveTravelAdvisorAPI () {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '751d131db4mshd9e5f13cb0f5721p1c4b46jsn5a049a43611d',
+		'X-RapidAPI-Key': '93e394b762msh5ff717525639df9p1be66djsn66e4b499732d',
 		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
 	}
   };
@@ -115,7 +115,7 @@ function filterResults(returnedObject) {
   // filteredResults = returnedJSONObject["data"]["data"].filter((restaurant) => returnedJSONObject[restaurant]["priceTag"].includes(userCriteria["price"]))
   
   for (var i = 0; i < returnedObject.length; i++) {
-    if (returnedObject[i]["establishmentTypeAndCuisineTags"].includes(userCriteria["categories"])) {
+    if ((returnedObject[i]["establishmentTypeAndCuisineTags"].includes(userCriteria["categories"])) && (returnedObject[i]["currentOpenStatusCategory"] == "OPEN")) {
       filteredResults.push(returnedObject[i]);
     }
   }
@@ -126,11 +126,6 @@ function filterResults(returnedObject) {
     renderResult(filteredResults);
   }
 
-  // Define criteria and append objects from returnedObject that satisfy our filtered criteria
-  // if filteredResults develops an an array with 0 results, call retrieveTravelAdvisorAPI again
- 
-  // if filteredResults.length > 0
-    // Call renderResult() function
 }
 
 function renderResult(returnedObject) {
