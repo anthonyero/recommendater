@@ -4,8 +4,6 @@ let infowindow;
 var mapContainer = document.querySelector('.map-container');
 var viewMapBtn = document.querySelector('.view-map-btn');
 
-  viewMapBtn.addEventListener('click', initMap);
-
 //Initializes the map. Const chicago stores the coordinates.
 function initMap() {
   if (mapContainer.hasAttribute('style', 'display: none;')){
@@ -24,7 +22,7 @@ function initMap() {
 //produces results onto map of places in the map and places maker on specified location.
 //Chicago. Request object is created to specify query and fields for the findPlaceFromQuery method.
 const request = {
-  query: document.querySelector('.restaurantName').textContent,
+  query: document.querySelector('.restaurantName').textContent + ' Chicago, IL',
   fields: ["name", "geometry"],
 };
 
@@ -53,7 +51,7 @@ function createMarker(place) {
     map,
     position: place.geometry.location,
   });
-
+  //event listener added to marker for the "click" event.
   google.maps.event.addListener(marker, "click", () => {
     infowindow.setContent(place.name || "");
     infowindow.open(map);
@@ -65,4 +63,37 @@ function displayMarker() {
 
 }
 
-window.initMap = initMap;
+viewMapBtn.addEventListener('click', initMap);
+
+//getLocation();
+
+/* function getLocation() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+      alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  userLocation = new google.maps.LatLng(latitude, longitude);
+}
+function showError(error) {
+  switch(error.code) {
+      case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.");
+          break;
+      case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+      case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+      case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+  }
+}
+*/
