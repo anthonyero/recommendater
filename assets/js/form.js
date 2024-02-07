@@ -197,6 +197,11 @@ function viewPreviousRecommendations() {
     }
   })
 
+  if (!previousRecommendationsLink.hasAttribute("style", "display: none;")) {
+    previousRecommendationsLink.setAttribute("style", "display: none; ");
+  }
+  
+
   if (!tailWindResultsElement.hasAttribute("style", "display: none;")) {
     tailWindResultsElement.setAttribute("style", "display: none; ");
   }
