@@ -102,9 +102,9 @@ header {
     text-align: center;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 320px) { /* iPhone SE and iPhone 14 Pro Max utilized as reference */
     .previous-results-container {
-      margin-left: 154px;
+      margin-left: 91px;
       width: min-content;
     }
     .previous-recommendations-link {
