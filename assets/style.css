@@ -101,3 +101,83 @@ header {
     font-size:200%;
     text-align: center;
 }
+
+@media screen and (min-width: 320px) {
+    .previous-results-container {
+      margin-left: 154px;
+      width: min-content;
+    }
+    .previous-recommendations-link {
+        font-size: 2.5rem;
+        align-items: center;
+        margin-left: 20%;
+    }
+
+    .previous-recommendations-heading {
+        font-size: 2.1rem;
+    }
+    
+    .previous-recommendations-list {
+        display: flexbox;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .previous-recommendations-list li {
+        font-size: 2rem;
+        width: 100%;        
+        border-bottom: 2px;
+        border-style: outset;
+    }
+
+    
+    .box {
+        font-size: 2rem;
+        text-align: center;
+        display: flexbox;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-right: 0%;
+        margin-left: 88px;
+    }
+
+    .box label {
+        font-size: 2rem;
+    }
+
+    .tailwind-results {
+        margin-left: 70px;
+    }
+
+    .map-container {
+        margin-left: 0%
+    }
+
+    .map-container div div {
+        height: 70%;
+        width: 70%;
+    }
+    
+}
+
+
+@media (min-width:600px)  { 
+    .previous-results-container {
+        margin-left: 33%;
+        width: min-content;
+      }
+    .tailwind-results {
+        margin-left: 250px;
+    }
+
+    .map-container {
+        margin-left: 80px;
+    }
+
+    .map-container div div {
+        height: 70%;
+        width: 70%;
+    }
+    
+
+}
