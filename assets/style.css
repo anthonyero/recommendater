@@ -1,5 +1,6 @@
 body {
-    background-image: url(Champagne.webp);
+   /* background-image: url(Champagne.webp);*/
+   
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -18,7 +19,41 @@ header {
     border-radius: 10px;
 }
 
-.start button {
+.homepage-link {
+    font-family: "Protest Riot", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: red;
+    font-size: 5rem;
+}
+
+.previous-results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.previous-recommendations-link {
+    font-size: 1.75rem;
+}
+
+.previous-recommendations-heading {
+    font-size: 1.75rem;
+}
+
+.previous-recommendations-list {
+    display: flexbox;
+    flex-direction: column;
+}
+
+.previous-recommendations-list li {
+    font-size: 1.5rem;
+    padding: 20px;
+    border-bottom: 2px;
+    border-style: outset;
+}
+
+.submit-button {
     font-size: large;
     background-color: rgba(238, 138, 138, 0.429);
     color: rgba(190, 25, 25, 0.766);
@@ -36,6 +71,13 @@ header {
     margin-right: 10%;
 
 }
+
+.results-map-container {
+    display: flexbox;
+    justify-content: space-evenly;
+}
+
+
 
 .map-container{
     border-radius: 20%;

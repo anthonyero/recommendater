@@ -14,6 +14,7 @@ var price2Input = document.getElementById("price2");
 var price3Input = document.getElementById("price3");
 var price4Input = document.getElementById("price4"); */
 var resultsElement = document.querySelector(".results");
+var resultsMapContainerElement = document.querySelector(".results-map-container");
 var tailWindResultsElement = document.querySelector(".tailwind-results");
 var locationImageElement = document.querySelector(".locationImage");
 var restaurantNameElement = document.querySelector(".restaurantName");
@@ -85,7 +86,7 @@ async function retrieveTravelAdvisorAPI () {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
+		'X-RapidAPI-Key': '751d131db4mshd9e5f13cb0f5721p1c4b46jsn5a049a43611d',
 		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
 	}
   };
@@ -148,9 +149,10 @@ function renderResult(returnedObject) {
   if (returnedObject[randomIndex]["hasMenu"]){
     menuElement.innerHTML = "Online Menu";
     menuElement.setAttribute("href", returnedObject[randomIndex]["menuUrl"]);
+    menuElement.setAttribute("target", "_blank")
   } else {
     menuElement.innerHTML = "No online menu provided";
-    menuElement.setAttribute("href", "")
+    menuElement.removeAttribute("href");
   }
 
   openStatusElement.textContent = "Open Status: " + returnedObject[randomIndex]["currentOpenStatusCategory"];
@@ -172,9 +174,13 @@ function renderResult(returnedObject) {
   boxes.forEach(box => {
     box.style.display = 'none';
   })
+  
+  if (resultsMapContainerElement.hasAttribute("style", "display: none;")) {
+    resultsMapContainerElement.removeAttribute("style", "display: none;");
+  }
 
   if (tailWindResultsElement.hasAttribute("style", "display: none;")) {
-    tailWindResultsElement.removeAttribute("style", "display: none; ");
+    tailWindResultsElement.removeAttribute("style", "display: none;");
   }
 
 // Check if a list for locally stored previousRecommendations exist. If not, create a an empty string object, else retrieve
@@ -196,6 +202,14 @@ function viewPreviousRecommendations() {
       box.style.display = 'none'
     }
   })
+
+  if (!previousRecommendationsLink.hasAttribute("style", "display: none;")) {
+    previousRecommendationsLink.setAttribute("style", "display: none; ");
+  }
+  
+    if (!resultsMapContainerElement.hasAttribute("style", "display: none;")) {
+    resultsMapContainerElement.setAttribute("style", "display: none;");
+  }
 
   if (!tailWindResultsElement.hasAttribute("style", "display: none;")) {
     tailWindResultsElement.setAttribute("style", "display: none; ");
