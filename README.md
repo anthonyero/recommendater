@@ -50,7 +50,7 @@ Github Repo: https://github.com/Orion888888/recommenDater_app
 
 ##### A user can also request a map with the location marked to view its location in the city
 
-![image](assets\Demo1.png) 
+![image](/assets/Demo1.png) 
 
 
 
