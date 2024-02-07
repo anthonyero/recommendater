@@ -56,8 +56,11 @@ header {
     font-size: large;
     background-color: rgba(238, 138, 138, 0.429);
     color: rgba(190, 25, 25, 0.766);
-   
+}
 
+.submit-button:active {
+    background-color: #08e10078;
+    color: green;
 }
 
 .box {
@@ -163,7 +166,7 @@ header {
 
 @media (min-width:600px)  { 
     .previous-results-container {
-        margin-left: 33%;
+        margin-left: 29%;
         width: min-content;
       }
     .tailwind-results {
