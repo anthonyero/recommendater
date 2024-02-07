@@ -86,7 +86,7 @@ async function retrieveTravelAdvisorAPI () {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'a404c68f68msh0b4f4d1ac118231p1ff281jsn93d59b2b3121',
+		'X-RapidAPI-Key': '751d131db4mshd9e5f13cb0f5721p1c4b46jsn5a049a43611d',
 		'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
 	}
   };
@@ -149,9 +149,10 @@ function renderResult(returnedObject) {
   if (returnedObject[randomIndex]["hasMenu"]){
     menuElement.innerHTML = "Online Menu";
     menuElement.setAttribute("href", returnedObject[randomIndex]["menuUrl"]);
+    menuElement.setAttribute("target", "_blank")
   } else {
     menuElement.innerHTML = "No online menu provided";
-    menuElement.setAttribute("href", "")
+    menuElement.removeAttribute("href");
   }
 
   openStatusElement.textContent = "Open Status: " + returnedObject[randomIndex]["currentOpenStatusCategory"];
