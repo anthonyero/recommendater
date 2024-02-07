@@ -34,6 +34,7 @@ header {
 
 .previous-recommendations-link {
     font-size: 1.75rem;
+    align-items: center;
 }
 
 .previous-recommendations-heading {
@@ -166,7 +167,7 @@ header {
 }
 
 
-@media (min-width:600px)  { 
+@media (min-width:600px) { 
     .previous-results-container {
         margin-left: 29%;
         width: min-content;
