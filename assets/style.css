@@ -1,5 +1,6 @@
 body {
-    background-image: url(Champagne.webp);
+   /* background-image: url(Champagne.webp);*/
+   
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -16,6 +17,14 @@ header {
     padding: 2%;
 
     border-radius: 10px;
+}
+
+.homepage-link {
+    font-family: "Protest Riot", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: red;
+    font-size: 5rem;
 }
 
 .start button {
