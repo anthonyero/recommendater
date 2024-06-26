@@ -8,15 +8,20 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
-    fs: {
-      allow: [
-        // Allow serving files from the project root directory
-        path.resolve(__dirname),
-        // Allow serving files from the client directory
-        path.resolve(__dirname, 'client'),
-        // Allow serving files from the node_modules directory for slick-carousel fonts
-        path.resolve(__dirname, 'node_modules/slick-carousel/slick/fonts'),
-      ],
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false
+      }
     },
+    // fs: {
+    //   allow: [
+    //     // Allow serving files from the project root directory
+    //     path.resolve(__dirname),
+    //     // Allow serving files from the client directory
+    //     path.resolve(__dirname, 'client'),
+    //   ],
+    // },
   },
 })
