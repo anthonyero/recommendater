@@ -11,12 +11,12 @@ const startServer = () => {
 	// Middleware
 	app.use(express.urlencoded({ extended: true }));
 	app.use(express.json());
-	app.use(express.static(path.join(__dirname, '../client/dist'))) 
+	app.use(express.static(path.join(__dirname, '../../client/dist'))) 
 	// app.use(routes)
 
-	app.get("/", (req: Request, res: Response) => {
-	  res.send("Express + TypeScript Server");
-	});
+	// app.get("/", (req: Request, res: Response) => {
+	//   res.send("Express + TypeScript Server");
+	// });
 
 	// For production deployment 
 	if (process.env.NODE_ENV === 'production') {
