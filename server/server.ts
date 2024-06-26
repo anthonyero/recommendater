@@ -9,18 +9,18 @@ const db = require('./config/connection')
 
 const startServer = () => {
 	// Middleware
-	app.use(express.urlencoded({ extended: false }));
+	app.use(express.urlencoded({ extended: true }));
 	app.use(express.json());
-	app.use(express.static(path.join(__dirname, '../client/dist')))
+	app.use(express.static(path.join(__dirname, '../client/dist'))) 
 	// app.use(routes)
 
-	app.get("/test", (req: Request, res: Response) => {
+	app.get("/", (req: Request, res: Response) => {
 	  res.send("Express + TypeScript Server");
 	});
 
 	// For production deployment 
 	if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, '../client/dist')));
+	app.use(express.static(path.join(__dirname, '../../client/dist'))); // Requires shifting two levels up because we are deploying from the 'dist' sub-directory
 	}
 
 	db.once('open', () => {
@@ -31,6 +31,3 @@ const startServer = () => {
 };
 
 startServer();
-
-
-
