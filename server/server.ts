@@ -16,7 +16,7 @@ const startServer = () => {
 	// app.use(express.static(path.join(__dirname, '../../client/dist'))) 
 	// app.use(routes)
 
-	app.get("/text", (req: Request, res: Response) => {
+	app.get("/api/text", (req: Request, res: Response) => {
 	  res.json({'text': 'Express + TypeScript Server'});
 	});
 
