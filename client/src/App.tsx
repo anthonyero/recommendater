@@ -8,6 +8,7 @@ function App() {
     text: string
   }
   const [count, setCount] = useState(0)
+  const [testData, setTestData] = useState('')
 
   const testRequest = async (url: string): Promise<any> => {
     const options: object = {
@@ -17,6 +18,7 @@ function App() {
       const response = await fetch(url, options) // Returns a response object with type, status, etc
       const data: textObject = await response.json() // Must use await otherwise we receive a undefined
       console.log(data.text)
+      setTestData(data.text)
       return data
 
     } catch (err) {
@@ -49,6 +51,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <button onClick={() => testRequest('api/text')}>API test</button>
+      <p>{testData}</p>
     </>
   )
 }
