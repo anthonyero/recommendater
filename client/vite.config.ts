@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+// import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,9 +10,10 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://localhost:3001/',
         changeOrigin: true,
-        secure: false
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''), // Required for making the request to the correct API server path and endpoint
       }
     },
     // fs: {
