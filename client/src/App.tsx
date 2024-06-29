@@ -4,7 +4,27 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  interface textObject {
+    text: string
+  }
   const [count, setCount] = useState(0)
+
+  const testRequest = async (url: string): Promise<any> => {
+    const options: object = {
+      method: 'GET'
+    }
+    try {
+      const response = await fetch(url, options) // Returns a response object with type, status, etc
+      const data: textObject = await response.json() // Must use await otherwise we receive a undefined
+      console.log(data.text)
+      return data
+
+    } catch (err) {
+        if (err) {
+          return err
+        }
+    }
+  }
 
   return (
     <>
@@ -28,6 +48,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button onClick={() => testRequest('api/text')}>API test</button>
     </>
   )
 }
