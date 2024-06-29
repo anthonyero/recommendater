@@ -10,9 +10,9 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: `http://localhost:${process.env.PORT || 3001}/`,
+        target: process.env.NODE_ENV === 'production' ? process.env.RENDER_EXTERNAL_URL : 'http://localhost:3001/', // When deployed/ in production, we will want to utilize Render's RENDER_EXTERNAL_URL environmental variable provided at runtime. 
         changeOrigin: true,
-        secure: false,
+        secure: process.env.NODE_ENV === 'production' ? true : false, // If we have are in production, secure is 'true', 'false' otherwise
         rewrite: (path) => path.replace(/^\/api/, ''), // Required for making the request to the correct API server path and endpoint
       }
     },
