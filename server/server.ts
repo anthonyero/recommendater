@@ -29,6 +29,11 @@ const startServer = () => {
 		// })
 	}
 
+	// Evaluate if this is best implemented through the API server or React's router 
+	app.use('*', (req: Request, res: Response) => {
+			res.sendFile(path.join(__dirname, '../../client/dist/index.html'))
+		})
+	
 	db.once('open', () => {
 		app.listen(PORT, () => {
 	  	console.log(`API server running on port ${PORT}`);
