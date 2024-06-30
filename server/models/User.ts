@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
-
+const DateRecommendation = require('./DateRecommendation.ts')
+ 
 const userSchema = new Schema ({
 	email: {
 		type: String,
@@ -14,7 +15,7 @@ const userSchema = new Schema ({
 	dates: [
 		{
 			type: Schema.Types.ObjectId,
-			ref: 'date'	
+			ref: 'DateRecommendation'	
 		}
 	]
 });

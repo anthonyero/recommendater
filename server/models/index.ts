@@ -1,3 +1,4 @@
-import User from 'User.ts'
+const User = require('./User.ts')
+const DateRecommendation = require('./DateRecommendation.ts');
 
-module.exports = { User }
+module.exports = { User, DateRecommendation }
