@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-const User = require('./User.ts');
 
 const dateRecommendationSchema = new Schema({
 	user: {
