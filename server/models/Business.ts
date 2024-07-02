@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const restaurantSchema = new Schema({
+const businessSchema = new Schema({
 	yelpId: {
 		type: String,
 		required: true
@@ -66,6 +66,10 @@ const restaurantSchema = new Schema({
 	]
 });
 
-const Restaurant = model('restaurant', restaurantSchema);
+// Originally, I had three separate files but they all had the same schema
+// I have consolidated these into a single 'business' schema and then created three models for three collections from it
+const Restaurant = model('restaurant', businessSchema);
+const Activity = model('activity', businessSchema);
+const Dessert = model('dessert', businessSchema);
 
-module.exports = Restaurant;
+module.exports = { Restaurant, Activity, Dessert };
