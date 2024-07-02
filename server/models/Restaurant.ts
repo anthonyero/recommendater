@@ -33,7 +33,8 @@ const restaurantSchema = new Schema({
 	},
 	price: {
 		type: String,
-		required: true
+		required: true, // Not all values returned form Yelp contain price. Look into either requesting user provide price information OR filtering  results to those with price information and only presenting with information
+		default: 'NA' // Because not all businesses provide price information, if it is not provided, default to NA
 	},
 	city: {
 		type: String,
@@ -47,10 +48,12 @@ const restaurantSchema = new Schema({
 		type: String, 
 		required: true
 	},
-	displayAddress: {
-		type: String,
-		required: true
-	}
+	displayAddress: [
+		{
+			type: String,
+			required: true
+		}
+	]
 });
 
 const Restaurant = model('restaurant', restaurantSchema);
