@@ -17,9 +17,11 @@ interface user {
 
 db.once('open', async () => {
 	let { User } = require( '../models/'); // Declare these using let in functional scope gets past the error of const User being declared in `index.ts` from models
+	let cleanDB = require('./cleanDb.ts');
 
 	try {
 		// Clean the database collections
+		await cleanDB('User', 'users')
 
 		// Begin seeding the database
 		const users: Array<user> = await User.create(userData);
