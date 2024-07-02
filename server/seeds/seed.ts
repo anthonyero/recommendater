@@ -13,8 +13,8 @@ interface user {
 	_id: Types.ObjectId,
 	__v: number
 }
-
-interface restaurant {
+// Due to the restaurant, activity, and dessert having the same fields, I have defined a generic 'business' interface 
+interface business {
 	yelpId: string,
 	alias: string,
 	name: string,
@@ -23,6 +23,8 @@ interface restaurant {
 	rating: number,
 	reviewCount: string,
 	price: string,
+	latitude: number,
+	longitude: number,
 	city: string,
 	country: string,
 	state: string,
@@ -47,7 +49,7 @@ db.once('open', async () => {
 		const userIds: Array<Types.ObjectId> = users.map(user => user._id)
 		console.log(userIds);
 
-		const restaurants: Array<restaurant> = await Restaurant.create(restaurantData);
+		const restaurants: Array<business> = await Restaurant.create(restaurantData);
 		const restaurantIds: Array<Types.ObjectId> = restaurants.map(restaurant => restaurant._id)
 		console.log(restaurantIds)
 

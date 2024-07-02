@@ -36,6 +36,16 @@ const restaurantSchema = new Schema({
 		required: true, // Not all values returned form Yelp contain price. Look into either requesting user provide price information OR filtering  results to those with price information and only presenting with information
 		default: 'NA' // Because not all businesses provide price information, if it is not provided, default to NA
 	},
+	latitude: {
+		type: Number,
+		min: -90,
+		max: 90
+	},
+	longitude: {
+		type: Number,
+		min: -180,
+		max: 180
+	},
 	city: {
 		type: String,
 		required: true
