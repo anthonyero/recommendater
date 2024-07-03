@@ -32,10 +32,10 @@
 	  "country": "ES",
 	  "state": "B",
 	  "displayAddress": [
-        "Carrer de Balmes, 59",
-        "08007 Barcelona",
-        "Spain"
-      ]
+      "Carrer de Balmes, 59",
+      "08007 Barcelona",
+      "Spain"
+    ]
   },
   {
     "yelpId": "6Ct7OeTRn4caY9g0swFBsw",
@@ -53,7 +53,7 @@
 	  "state": "NY",
 	  "displayAddress": [
 	  	"102 Norfolk St",
-        "New York, NY 10002"
+      "New York, NY 10002"
 	  ]
   }
 ]
