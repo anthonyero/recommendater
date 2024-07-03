@@ -23,6 +23,6 @@ const userSchema = new Schema ({
 // We would also require the `isCorrectPassword` function
 // As I am interested in using Auth0, must review documentation
 
-const User = model('user', userSchema)
+const User = model('User', userSchema)
 
 module.exports = User;

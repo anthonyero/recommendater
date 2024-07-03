@@ -68,8 +68,8 @@ const businessSchema = new Schema({
 
 // Originally, I had three separate files but they all had the same schema
 // I have consolidated these into a single 'business' schema and then created three models for three collections from it
-const Restaurant = model('restaurant', businessSchema);
-const Activity = model('activity', businessSchema);
-const Dessert = model('dessert', businessSchema);
+const Restaurant = model('Restaurant', businessSchema);
+const Activity = model('Activity', businessSchema);
+const Dessert = model('Dessert', businessSchema);
 
 module.exports = { Restaurant, Activity, Dessert };

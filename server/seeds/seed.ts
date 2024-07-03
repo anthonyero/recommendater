@@ -66,19 +66,15 @@ db.once('open', async () => {
 		// Begin seeding the database
 		const users: Array<user> = await User.create(userData);
 		const userIds: Array<Types.ObjectId> = users.map(user => user._id);
-		console.log(userIds);
 
 		const restaurants: Array<business> = await Restaurant.create(restaurantData);
 		const restaurantIds: Array<Types.ObjectId> = restaurants.map(restaurant => restaurant._id);
-		console.log(restaurantIds);
 
 		const activities: Array<business> = await Activity.create(activityData);
 		const activityIds: Array<Types.ObjectId> = activities.map(activity => activity._id);
-		console.log(activityIds);
 
 		const desserts: Array<business> = await Dessert.create(dessertData);
 		const dessertIds: Array<Types.ObjectId> = desserts.map(dessert => dessert._id);
-		console.log(dessertIds);
 
 		// Promise.all with await required otherwise we have undefined because the Promise is unfulfilled/not resolved. 
 		// We want to return an array of Promises so we first need to contain these operations within a single Promise and await its resolution
@@ -96,8 +92,22 @@ db.once('open', async () => {
             });
             return recommendation;
         }));
-		const dateRecommendationIds: Array<Types.ObjectId> = dateRecommendations.map( dateRecommendation => dateRecommendation._id);
-		console.log(dateRecommendationIds);
+
+		// We need to update the users to add their associated dateRecommendation documents to their document
+		// We are iterating over an array again using promises so we use await and Promise.all surrounding the map function 
+		// @ts-ignore // This is added to prevent the unUsedLocal variable compile error but we still want to use the global settings 
+		const updatedUsers: Array<user> = await Promise.all(dateRecommendations.map(async (dateRecommendation: dateRecommendation, index: number) => {
+			const user: user = await User.findByIdAndUpdate(dateRecommendation.user,
+	          { $addToSet: { dates: dateRecommendation._id } },
+	          { new: true, runValidators: true }
+	          )
+			return user;
+		}));
+
+		// This confirms that we have successfully populated data correctly
+		// const allUsers = await User.find()
+		// .populate({path: 'dates', populate: [{ path: 'restaurant', model: 'Restaurant'}, { path: 'activity', model: 'Activity'}, { path: 'dessert', model: 'Dessert'} ]});
+		// console.log(JSON.stringify(allUsers)); // Without JSON.stringify, the nested object will be logged as [object]
 
 		console.log('Seeding complete');
     	process.exit(0);
