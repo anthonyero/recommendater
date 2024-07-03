@@ -5,6 +5,7 @@ const db = require('../config/connection.ts');
 const userData = require('./userData.json');
 const restaurantData = require('./restaurantData.json');
 const activityData = require('./activityData.json');
+const dessertData = require('./dessertData.json');
 
 interface user {
 	email: string,
@@ -36,27 +37,32 @@ interface business {
 // const cleanDB = require('./cleanDb.ts');
 
 db.once('open', async () => {
-	let { User, Restaurant, Activity } = require( '../models/'); // Declare these using let in functional scope gets past the error of const User being declared in `index.ts` from models
+	let { User, Restaurant, Activity, Dessert } = require( '../models/'); // Declare these using let in functional scope gets past the error of const User being declared in `index.ts` from models
 	let cleanDB = require('./cleanDb.ts');
 
 	try {
 		// Clean the database collections
-		await cleanDB('User', 'users')
-		await cleanDB('Restaurant', 'restaurants')
-		await cleanDB('Activity', 'activities')
+		await cleanDB('User', 'users');
+		await cleanDB('Restaurant', 'restaurants');
+		await cleanDB('Activity', 'activities');
+		await cleanDB('Dessert', 'desserts');
 
 		// Begin seeding the database
 		const users: Array<user> = await User.create(userData);
-		const userIds: Array<Types.ObjectId> = users.map(user => user._id)
+		const userIds: Array<Types.ObjectId> = users.map(user => user._id);
 		console.log(userIds);
 
 		const restaurants: Array<business> = await Restaurant.create(restaurantData);
-		const restaurantIds: Array<Types.ObjectId> = restaurants.map(restaurant => restaurant._id)
-		console.log(restaurantIds)
+		const restaurantIds: Array<Types.ObjectId> = restaurants.map(restaurant => restaurant._id);
+		console.log(restaurantIds);
 
 		const activities: Array<business> = await Activity.create(activityData);
-		const activityIds: Array<Types.ObjectId> = activities.map(activity => activity._id)
-		console.log(activityIds)
+		const activityIds: Array<Types.ObjectId> = activities.map(activity => activity._id);
+		console.log(activityIds);
+
+		const desserts: Array<business> = await Dessert.create(dessertData);
+		const dessertIds: Array<Types.ObjectId> = desserts.map(dessert => dessert._id);
+		console.log(dessertIds);
 
 		console.log('Seeding complete');
     	process.exit(0);
