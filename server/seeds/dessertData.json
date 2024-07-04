@@ -1,0 +1,60 @@
+[
+	{
+    "yelpId": "iTJ3jZ-dli9WLOrVsFXr6A",
+    "alias": "san-franciscos-hometown-creamery-san-francisco",
+    "name": "San Francisco's Hometown Creamerya",
+    "imageUrl": "https://s3-media1.fl.yelpcdn.com/bphoto/ZTF5CyVDTU5s1tq1DivHHQ/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/san-franciscos-hometown-creamery-san-francisco?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.3,
+    "reviewCount": 1014,
+    "price": "$$",
+    "latitude": 37.78136,
+    "longitude": -122.46092107729817,
+	  "city": "San Francisco",
+	  "country": "US",
+	  "state": "CA",
+	  "displayAddress": [
+	    "1290 9th Ave",
+	    "San Francisco, CA 94122"
+	  ]
+  },
+  {
+    "yelpId": "pqFbkuGfWoYnIzNEVGHXZQ",
+    "alias": "cookona-barcelona",
+    "name": "Cookona",
+    "imageUrl": "https://s3-media1.fl.yelpcdn.com/bphoto/-c6jtjNVRXw4BFszCvA48A/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/cookona-barcelona?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.7,
+    "reviewCount": 3,
+    "latitude": 41.391381,
+    "longitude": 2.155045,
+    "price": "€",
+	  "city": "Barcelona",
+	  "country": "ES",
+	  "state": "B",
+	  "displayAddress": [
+      "Carrer del Rosselló, 160",
+      "08036 Barcelona",
+      "Spain"
+    ]
+  },
+  {
+    "yelpId": "lWOkeS-wV4no8qqA9OwwEg",
+    "alias": "doughnut-plant-new-york-6",
+    "name": "Doughnut Plant",
+    "imageUrl": "https://s3-media1.fl.yelpcdn.com/bphoto/hLWKXsLv6hyltNSilBy8-g/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/doughnut-plant-new-york-6?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.3,
+    "reviewCount": 3458,
+    "price": "$$",
+    "latitude": 40.716337,
+    "longitude": -73.988577,
+	  "city": "New York",
+	  "country": "US",
+	  "state": "NY",
+	  "displayAddress": [
+	  	"379 Grand St",
+      "New York, NY 10002"
+	  ]
+  }
+]

@@ -42,6 +42,6 @@ const dateRecommendationSchema = new Schema({
 	}
 });
 
-const DateRecommendation = model('dateRecommendation', dateRecommendationSchema);
+const DateRecommendation = model('DateRecommendation', dateRecommendationSchema);
 
 module.exports = DateRecommendation;

@@ -1,0 +1,59 @@
+[
+	{
+    "yelpId": "msT3LrLB4fhN04HYHuFsew",
+    "alias": "bella-trattoria-san-francisco",
+    "name": "Bella Trattoria",
+    "imageUrl": "https://s3-media4.fl.yelpcdn.com/bphoto/pgRGhVaEdRprQU2xTq9zOQ/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/bella-trattoria-san-francisco?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.3,
+    "reviewCount": 1930,
+    "price": "$$",
+    "latitude": 37.78136,
+    "longitude": -122.46092107729817,
+	  "city": "San Francisco",
+	  "country": "US",
+	  "state": "CA",
+	  "displayAddress": [
+	    "3854 Geary Blvd",
+	    "San Francisco, CA 94118"
+	  ]
+  },
+  {
+    "yelpId": "Z0gGNwP2l-sHtkicd7lsGQ",
+    "alias": "takumi-ramen-barcelona",
+    "name": "Takumi Ramen",
+    "imageUrl": "https://s3-media3.fl.yelpcdn.com/bphoto/yrmosgY2vnSL8eK_WTC-hA/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/takumi-ramen-barcelona?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.5,
+    "reviewCount": 65,
+    "latitude": 41.389652,
+    "longitude": 2.1619371,
+	  "city": "Barcelona",
+	  "country": "ES",
+	  "state": "B",
+	  "displayAddress": [
+      "Carrer de Balmes, 59",
+      "08007 Barcelona",
+      "Spain"
+    ]
+  },
+  {
+    "yelpId": "6Ct7OeTRn4caY9g0swFBsw",
+    "alias": "la-contenta-new-york",
+    "name": "La Contenta",
+    "imageUrl": "https://s3-media2.fl.yelpcdn.com/bphoto/FwZAyPgdKdPGQ8aAGKh3-w/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/la-contenta-new-york?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.5,
+    "reviewCount": 919,
+    "price": "$$",
+    "latitude": 40.71873,
+    "longitude": -73.98691,
+	  "city": "New York",
+	  "country": "US",
+	  "state": "NY",
+	  "displayAddress": [
+	  	"102 Norfolk St",
+      "New York, NY 10002"
+	  ]
+  }
+]

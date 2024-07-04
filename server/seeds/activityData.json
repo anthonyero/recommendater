@@ -1,0 +1,57 @@
+[
+	{
+    "yelpId": "fTlqRlDPtOMayvZM46LVlA",
+    "alias": "baker-beach-san-francisco",
+    "name": "Baker Beach",
+    "imageUrl": "https://s3-media1.fl.yelpcdn.com/bphoto/1pz01VTpzUQ25XhBpZl4cA/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/baker-beach-san-francisco?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.5,
+    "reviewCount": 799,
+    "latitude": 37.79055812746036,
+    "longitude": -122.4836395,
+	  "city": "San Francisco",
+	  "country": "US",
+	  "state": "CA",
+	  "displayAddress": [
+      "1770 Gibson Rd",
+      "San Francisco, CA 94129"
+	  ]
+  },
+  {
+    "yelpId": "x1ufdMS_Yisq1Ph8puqHlw",
+    "alias": "museu-picasso-barcelona",
+    "name": "Museu Picasso",
+    "imageUrl": "https://s3-media1.fl.yelpcdn.com/bphoto/NvanprmtvfHXOLEuHl0RPA/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/museu-picasso-barcelona?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.1,
+    "reviewCount": 285,
+    "latitude": 41.3850256689707,
+    "longitude": 2.1810493568569,
+	  "city": "Barcelona",
+	  "country": "ES",
+	  "state": "B",
+    "display_address": [
+      "Carrer de Montcada, 15-23",
+      "08003 Barcelona",
+      "Spain"
+    ]
+  },
+  {
+    "yelpId": "gOAhZX6PL5vKSzFAthL2EQ",
+    "alias": "squarena-new-york",
+    "name": "Squarena",
+    "imageUrl": "https://s3-media1.fl.yelpcdn.com/bphoto/awr_74B0g_o8sfJSt9oQIA/o.jpg",
+    "yelpUrl": "https://www.yelp.com/biz/squarena-new-york?adjust_creative=G2RdVGPNvuQl5HtTXhtusg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=G2RdVGPNvuQl5HtTXhtusg",
+    "rating": 4.9,
+    "reviewCount": 10,
+    "latitude": 40.75465350535371,
+    "longitude": -73.9883954,
+	  "city": "New York",
+	  "country": "US",
+	  "state": "NY",
+    "display_address": [
+      "552 7th Ave",
+      "New York, NY 10018"
+    ]
+  }
+]
