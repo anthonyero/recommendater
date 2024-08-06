@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
+const routes = require('./routes/');
 dotenv.config() // Allows us to access environmental variables locally. Can be written on one line as in `connection.ts`
 
 const cors = require('cors')
@@ -13,12 +14,11 @@ const startServer = () => {
 	app.use(cors())
 	app.use(express.urlencoded({ extended: true }));
 	app.use(express.json());
-	// app.use(express.static(path.join(__dirname, '../../client/dist'))) 
-	// app.use(routes)
-
+	// app.use(express.static(path.join(__dirname, '../../client/dist')))
 	app.get("/api/text", (req: Request, res: Response) => {
 	  res.json({'text': 'Express + TypeScript Server'});
-	});
+	}); 
+	app.use(routes)
 
 	// For production deployment 
 	if (process.env.NODE_ENV === 'production') {
