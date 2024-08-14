@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-const db = require('../config/connection.ts');
+const db = require('../config/connection');
 
 // Define interfaces for each of our models
 interface user {
