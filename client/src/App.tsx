@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import LoginButton from './components/LoginButton';
 import './App.css'
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
     try {
       const response = await fetch(url, options) // Returns a response object with type, status, etc
       const data: textObject = await response.json() // Must use await otherwise we receive a undefined
-      console.log(data.text)
       setTestData(data.text)
       return data
 
@@ -30,15 +28,8 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>RecommenDater</h1>
+      <LoginButton></LoginButton>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
