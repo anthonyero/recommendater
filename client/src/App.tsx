@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LogoutButton';
 import './App.css'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
     <>
       <h1>RecommenDater</h1>
       <LoginButton></LoginButton>
+      <LogoutButton></LogoutButton>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
